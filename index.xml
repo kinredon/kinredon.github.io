@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kinredon's blog</title><link>https://kinredon.github.io/</link><description>Recent content on kinredon's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 03 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kinredon.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://kinredon.github.io/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>https://kinredon.github.io/about/</guid><description>&lt;p>Hugo is a static site engine written in Go.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kinredon's blog</title><link>https://kinredon.github.io/</link><description>Recent content on kinredon's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 04 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kinredon.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://kinredon.github.io/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>https://kinredon.github.io/about/</guid><description>&lt;p>Hugo is a static site engine written in Go.&lt;/p>
 &lt;p>It makes use of a variety of open source projects including:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://github.com/spf13/cobra">Cobra&lt;/a>&lt;/li>
@@ -6,7 +6,286 @@
 &lt;li>&lt;a href="https://github.com/spf13/jWalterWeatherman">J Walter Weatherman&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/spf13/cast">Cast&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>Learn more and contribute on &lt;a href="https://github.com/gohugoio">GitHub&lt;/a>.&lt;/p></description></item><item><title>半监督目标检测（Semi-Supervised Object Detection，SSOD）相关方法介绍</title><link>https://kinredon.github.io/post/semi-supervised-object-detection/</link><pubDate>Sun, 03 Oct 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/semi-supervised-object-detection/</guid><description>&lt;p>近期阅读了一些半监督目标检测（Semi-Supervised Object Detection，SSOD）的文章，特此总结，以供未来查阅。&lt;/p>
+&lt;p>Learn more and contribute on &lt;a href="https://github.com/gohugoio">GitHub&lt;/a>.&lt;/p></description></item><item><title>使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上</title><link>https://kinredon.github.io/post/how-to-publish-personal-website-on-github/</link><pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/how-to-publish-personal-website-on-github/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>相信很多人都有搭建个人网站的需求，可能是想写自己的博文，传达一些思想给社区。也有可能你是一名科研工作者，需要搭建个人学术主页展示科研成果。我也或多或少出于以上原因，选择搭建了个人网站，搭建过程中出现了许多问题，因此记录和分享，避免下次踩坑。Anyway，本文记录使用搭建个人博客的全过程，包括网站工具 &lt;a href="https://gohugo.io/">Hugo&lt;/a> 的介绍和使用设置，以及如何将个人网站发布在免费托管平台，也就是 GitHub Pages 上。&lt;/p>
+&lt;p>我选择 Hugo 的原因主要有三点：&lt;/p>
+&lt;ul>
+&lt;li>简单易用；&lt;/li>
+&lt;li>&lt;a href="https://gohugo.io/">Hugo&lt;/a> 能够快速地构建个人网站；&lt;/li>
+&lt;li>拥有丰富的主题，可供挑选 &lt;a href="https://jamstackthemes.dev/ssg/hugo/">Hugo Themes&lt;/a>；&lt;/li>
+&lt;/ul>
+&lt;p>选择 GitHub Pages 的原因就更简单了，免费又好用。&lt;/p>
+&lt;h2 id="hugo-的安装和使用">Hugo 的安装和使用&lt;/h2>
+&lt;p>Hugo 宣传号称是世界上最快构建网站的框架，也是最流行的静态网站生产工具之一。&lt;/p>
+&lt;h3 id="安装-hugo">安装 Hugo&lt;/h3>
+&lt;p>由于我的操作系统是 MacOs 因此安装起来特别简单：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">brew install hugo
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>其他平台可参考 &lt;a href="https://gohugo.io/getting-started/installing">Hugo Install&lt;/a>。&lt;/p>
+&lt;h3 id="创建个人网站">创建个人网站&lt;/h3>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">hugo new site quickstart
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="使用-hugo-主题">使用 Hugo 主题&lt;/h3>
+&lt;p>我使用的是 &lt;a href="https://github.com/xianmin/hugo-theme-jane">jane&lt;/a>, 将主题 &lt;code>clone&lt;/code> 到 &lt;code>theme&lt;/code> 目录下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="nb">cd&lt;/span> quickstart
+git clone https://github.com/xianmin/hugo-theme-jane.git --depth&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span> themes/jane
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>使用示例文本和默认的站点设置：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">cp -r themes/jane/exampleSite/content ./
+cp themes/jane/exampleSite/config.toml ./
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>启动 Hugo 服务器，在 &lt;a href="http://localhost:1313/">http://localhost:1313/&lt;/a> 将会看到示例 jane 主题的示例网站：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">hugo server
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="个人配置和网站生产">个人配置和网站生产&lt;/h3>
+&lt;p>配置文件在网站根目录 &lt;code>quickstart&lt;/code> 下 &lt;code>config.toml&lt;/code> , 根据自身需求进行修改。在 jane 主题下的 &lt;code>exampleSite&lt;/code> 文件夹中的文件可作为参考。默认的文章将存储在 &lt;code>./content/post&lt;/code> 中，每当写完文章，运行 &lt;code>hugo&lt;/code> 命令，Hugo 将自动生成静态网站到 &lt;code>public&lt;/code> 文件夹中，我们只需要将该文件夹的内容发布在网络上即可。&lt;/p>
+&lt;p>更多关于主题的配置可以参考 &lt;a href="https://github.com/xianmin/hugo-theme-jane/blob/master/README-zh.md">jane README.md&lt;/a>。&lt;/p>
+&lt;h2 id="github-pages">GitHub Pages&lt;/h2>
+&lt;p>我个人经常使用 GitHub，也见到很多大佬利用 GitHub pages 挂载自己的个人网站，发现配置起来也不复再，因此选择使用 GitHub pages 来进行配置，关于 GitHub pages 可以查看&lt;a href="https://pages.github.com/">官网&lt;/a>，主要包括四个步骤：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>创建一个与 &lt;code>username&lt;/code> 同名的 &lt;strong>空&lt;/strong> &lt;code>username.github.io&lt;/code> 仓库，包含任何内容，包括 &lt;code>readme.md=，比如我的用户名为 =kinredon&lt;/code>, 因此我创建了一个仓库，名为 &lt;code>kinredon.github.io&lt;/code>;&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>克隆仓库到本地&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">git clone https://github.com/kinredon/kinredon.github.io
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>添加个人网站内容到该仓库&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="c1"># copy 生成的网站内容到仓库文件夹下&lt;/span>
+cp -rf quickstart/public/* kinredon.github.io/
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>将文件内容同步更新到 GitHub 服务器上&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="nb">cd&lt;/span> kinredon.github.io
+git add .
+git commit -m &lt;span class="s2">&amp;#34;init the website&amp;#34;&lt;/span>
+git push
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>此时，通过进入 &lt;a href="https://kinredon.github.io">https://kinredon.github.io&lt;/a> 即可访问自己的个人网站。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>上面的步骤略显麻烦，每次需要将生成在 &lt;code>public&lt;/code> 文件夹下的目录拷贝到 &lt;code>kinredon.github.io&lt;/code> 目录下，然后发布到远程服务器。根据 &lt;a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Host on GitHub&lt;/a>，发布到 GitHub Pages 有两种方式, 一种是直接使用仓库目录下的 &lt;code>doc&lt;/code> 目录作为原本 &lt;code>public&lt;/code> 目录，详情可以参考 &lt;a href="https://patrolli.github.io/xssq/post/hugo%5F%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">hugo 博客搭建&lt;/a>。我采用的方式是利用 GitHub Action 自动完成上述过程。&lt;/p>
+&lt;h3 id="使用-github-action-自动发布文章">使用 GitHub Action 自动发布文章&lt;/h3>
+&lt;p>这里主要参考 &lt;a href="https://vinurs.me/posts/1a329bf3-fbb7-4006-9714-d3b072826376/">搭建个人blog&lt;/a>, 使用 &lt;code>master&lt;/code> 分支发布文章，使用一个新的 &lt;code>source&lt;/code> 分支进行写作，写作完成后上传 &lt;code>source&lt;/code> ，GitHub Action 自动将 &lt;code>source&lt;/code> 分支的 &lt;code>publish&lt;/code> 文件夹拷贝到 &lt;code>master&lt;/code> 分支，从而完成文章的发布。&lt;/p>
+&lt;p>主要步骤如下：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>在 GitHub 上的个人网站仓库 &lt;code>kinredon.github.io&lt;/code> 新建 &lt;code>source&lt;/code> 分支&lt;/p>
+&lt;link rel="stylesheet" href="https://kinredon.github.io/css/hugo-easy-gallery.css" />
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211004154805.png" alt="Figure 1: 创建 source 分支，由于我已经创建过，所以这里以 source-1 为例"/>
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211004154805.png" itemprop="contentUrl">&lt;/a>
+&lt;figcaption>
+&lt;p>Figure 1: 创建 source 分支，由于我已经创建过，所以这里以 source-1 为例&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;/li>
+&lt;li>
+&lt;p>清除文件夹 &lt;code>kinredon.github.io&lt;/code> 中的内容，并将个人网站 &lt;code>quickstart&lt;/code> 中的所有内容 copy 到 &lt;code>kinredon.github.io&lt;/code> ：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">git clone --branch&lt;span class="o">=&lt;/span>&lt;span class="nb">source&lt;/span> https://github.com/kinredon/kinredon.github.io.git
+rm -rf kinredon.github.io/*
+cp -rf quickstart/* kinredon.github.io
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>生成 &lt;code>ACTIONS_DEPLOY_KEY&lt;/code>&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">ssh-keygen -t rsa -b &lt;span class="m">4096&lt;/span> -C &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>git config user.email&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -f gh-pages -N &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>将生成的私钥文件 &lt;code>gh-pages&lt;/code> (注意不是公钥 &lt;code>gh-pages&lt;/code>) 中的内容复制填写到 GitHub 仓库设置中，即在 &lt;code>kinredon.github.io&lt;/code> 项目主页中，找到 Repository Settings -&amp;gt; Secrets -&amp;gt; 添加这个私钥的内容并命名为 &lt;code>ACTIONS_DEPLOY_KEY&lt;/code> 。
+然后在 &lt;code>kinredon.github.io&lt;/code> 项目主页中，找到 Repository Settings -&amp;gt; Deploy Keys -&amp;gt; 添加这个公钥的内容，命名为 &lt;code>ACTIONS_DEPLOY_KEY&lt;/code> ，并勾选 Allow write access。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>配置 workflow
+创建 workflow 文件&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">mkdir -p .github/workflows/
+touch .github/workflows/main.yml
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在 &lt;code>main.yaml&lt;/code> 中撰写 workflow，内容如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;span class="lnt">25
+&lt;/span>&lt;span class="lnt">26
+&lt;/span>&lt;span class="lnt">27
+&lt;/span>&lt;span class="lnt">28
+&lt;/span>&lt;span class="lnt">29
+&lt;/span>&lt;span class="lnt">30
+&lt;/span>&lt;span class="lnt">31
+&lt;/span>&lt;span class="lnt">32
+&lt;/span>&lt;span class="lnt">33
+&lt;/span>&lt;span class="lnt">34
+&lt;/span>&lt;span class="lnt">35
+&lt;/span>&lt;span class="lnt">36
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">name: github pages
+on:
+push:
+branches:
+​ - &lt;span class="nb">source&lt;/span>
+jobs:
+build-deploy:
+runs-on: ubuntu-18.04
+steps:
+​ - uses: actions/checkout@master
+​ - name: Checkout submodules
+shell: bash
+run: &lt;span class="p">|&lt;/span>
+&lt;span class="nv">auth_header&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>git config --local --get http.https://github.com/.extraheader&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span>
+git submodule sync --recursive
+git -c &lt;span class="s2">&amp;#34;http.extraheader=&lt;/span>&lt;span class="nv">$auth_header&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -c protocol.version&lt;span class="o">=&lt;/span>&lt;span class="m">2&lt;/span> submodule update --init --force --recursive --depth&lt;span class="o">=&lt;/span>&lt;span class="m">1&lt;/span>
+- name: Setup Hugo
+uses: peaceiris/actions-hugo@v2
+with:
+hugo-version: &lt;span class="s1">&amp;#39;latest&amp;#39;&lt;/span>
+extended: &lt;span class="nb">true&lt;/span>
+- name: Build
+run: hugo --gc --minify --cleanDestinationDir
+- name: Deploy
+uses: peaceiris/actions-gh-pages@v3
+with:
+deploy_key: &lt;span class="si">${&lt;/span>&lt;span class="p">{ secrets.ACTIONS_DEPLOY_KEY &lt;/span>&lt;span class="si">}&lt;/span>&lt;span class="o">}&lt;/span>
+publish_dir: ./public
+publish_branch: main
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>注意，如果你的仓库是 &lt;code>master&lt;/code> 分支作为主分支，将 &lt;code>publish_branch&lt;/code> 后面的 &lt;code>main&lt;/code> 修改为 &lt;code>master&lt;/code> ;&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>将 source 分支发送到远程
+发送脚本 &lt;code>deploy.sh&lt;/code> :&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="cp">#!/bin/bash
+&lt;/span>&lt;span class="cp">&lt;/span>git add .
+git commit -m &lt;span class="s2">&amp;#34;update article&amp;#34;&lt;/span>
+git push
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>推送到远程分支：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">sh deploy.sh
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>推送成功后，可以在项目主页中的 action 里面查看自动部署是否成功，即 &lt;a href="https://github.com/kinredon/kinredon.github.io/actions">https://github.com/kinredon/kinredon.github.io/actions&lt;/a>；&lt;/p>
+&lt;/li>
+&lt;/ol></description></item><item><title>半监督目标检测（Semi-Supervised Object Detection，SSOD）相关方法介绍</title><link>https://kinredon.github.io/post/semi-supervised-object-detection/</link><pubDate>Sun, 03 Oct 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/semi-supervised-object-detection/</guid><description>&lt;p>近期阅读了一些半监督目标检测（Semi-Supervised Object Detection，SSOD）的文章，特此总结，以供未来查阅。&lt;/p>
 &lt;h2 id="什么是半监督目标检测">什么是半监督目标检测？&lt;/h2>
 &lt;p>传统机器学习根据训练数据集中的标注情况，有着不同的场景，主要包括：监督学习、弱监督学习、弱半监督学习、半监督学习。由于目标检测任务的特殊性，在介绍半监督目标检测方法之前，我们查看一下目标检测在这四个方向下的具体设定，如下图所示（不包括无监督学习）：&lt;/p>
 &lt;link rel="stylesheet" href="https://kinredon.github.io/css/hugo-easy-gallery.css" />
