@@ -1,7 +1,7 @@
 +++
 title = "半监督目标检测（Semi-Supervised Object Detection，SSOD）相关方法介绍"
 date = 2021-10-03
-lastmod = 2021-10-04T13:32:13+08:00
+lastmod = 2021-10-04T14:00:05+08:00
 tags = ["Semi-supervised Learning", "Object Detection", "Computer Vision"]
 categories = ["Computer Vision"]
 draft = false
