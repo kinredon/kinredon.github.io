@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git add content
+git add .
 git add org/img
 git commit -m "update article"
 git push
