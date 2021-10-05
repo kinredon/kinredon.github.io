@@ -1,7 +1,7 @@
 +++
 title = "使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上"
 date = 2021-10-04
-lastmod = 2021-10-04T16:07:04+08:00
+lastmod = 2021-10-05T13:05:33+08:00
 tags = ["Hugo", "Blog", "Website"]
 categories = ["Hugo"]
 draft = false
@@ -23,7 +23,7 @@ katex = true
 
 ## Hugo 的安装和使用 {#hugo-的安装和使用}
 
-Hugo 宣传号称是世界上最快构建网站的框架，也是最流行的静态网站生产工具之一。
+Hugo 宣传号称是世界上最快构建网站的框架，也是最流行的静态网站生成工具之一。
 
 
 ### 安装 Hugo {#安装-hugo}
@@ -67,7 +67,7 @@ hugo server
 ```
 
 
-### 个人配置和网站生产 {#个人配置和网站生产}
+### 个人配置和网站生成 {#个人配置和网站生成}
 
 配置文件在网站根目录 `quickstart` 下 `config.toml` , 根据自身需求进行修改。在 jane 主题下的 `exampleSite` 文件夹中的文件可作为参考。默认的文章将存储在 `./content/post` 中，每当写完文章，运行 `hugo` 命令，Hugo 将自动生成静态网站到 `public` 文件夹中，我们只需要将该文件夹的内容发布在网络上即可。
 
@@ -76,9 +76,9 @@ hugo server
 
 ## GitHub Pages {#github-pages}
 
-我个人经常使用 GitHub，也见到很多大佬利用 GitHub pages 挂载自己的个人网站，发现配置起来也不复再，因此选择使用 GitHub pages 来进行配置，关于 GitHub pages 可以查看[官网](https://pages.github.com/)，主要包括四个步骤：
+我个人经常使用 GitHub，也见到很多大佬利用 GitHub pages 挂载自己的个人网站，发现配置起来也很简单，因此选择使用 GitHub pages 来进行配置，关于 GitHub pages 可以查看[官网](https://pages.github.com/)，主要包括四个步骤：
 
-1.  创建一个与 `username` 同名的 **空** `username.github.io` 仓库，包含任何内容，包括 `readme.md=，比如我的用户名为 =kinredon`, 因此我创建了一个仓库，名为 `kinredon.github.io`;
+1.  创建一个与 `username` 同名的 **空** `username.github.io` 仓库，不包含任何内容，如 `readme.md=，比如我的用户名为 =kinredon`, 因此我创建了一个仓库，名为 `kinredon.github.io`;
 2.  克隆仓库到本地
 
     ```shell
@@ -126,9 +126,10 @@ hugo server
     ssh-keygen -t rsa -b 4096 -C "$(git config user.email)" -f gh-pages -N ""
     ```
 
-    将生成的私钥文件 `gh-pages` (注意不是公钥 `gh-pages`) 中的内容复制填写到 GitHub 仓库设置中，即在 `kinredon.github.io` 项目主页中，找到 Repository Settings -> Secrets -> 添加这个私钥的内容并命名为 `ACTIONS_DEPLOY_KEY` 。
+    将生成的私钥文件 `gh-pages` (注意不是公钥 `gh-pages.pub`) 中的内容复制填写到 GitHub 仓库设置中，即在 `kinredon.github.io` 项目主页中，找到 Repository Settings -> Secrets -> 添加这个私钥的内容并命名为 `ACTIONS_DEPLOY_KEY` 。
     然后在 `kinredon.github.io` 项目主页中，找到 Repository Settings -> Deploy Keys -> 添加这个公钥的内容，命名为 `ACTIONS_DEPLOY_KEY` ，并勾选 Allow write access。
 4.  配置 workflow
+
     创建 workflow 文件
 
     ```shell
@@ -180,6 +181,7 @@ hugo server
     注意，如果你的仓库是 `master` 分支作为主分支，将 `publish_branch` 后面的 `main` 修改为 `master` ;
 
 5.  将 source 分支发送到远程
+
     发送脚本 `deploy.sh` :
 
     ```shell

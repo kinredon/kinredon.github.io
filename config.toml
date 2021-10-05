@@ -23,6 +23,9 @@ pygmentsUseClasses = true # Use CSS classes to format highlighted code
 pygmentsCodefencesGuessSyntax = true
 pygmentsOptions = "linenos=table"
 
+# show word count and read time ?                       # 是否显示字数统计与阅读时间
+moreMeta = true
+
 # language support # en / zh-cn / other... translations present in i18n/
 defaultContentLanguage = "zh-cn"           # Default language to use
 [languages.zh-cn]
@@ -85,6 +88,11 @@ defaultContentLanguage = "zh-cn"           # Default language to use
   #   (relative to /static/css and /static/js respectively)
   customCSS = []            # if ['custom.css'], load '/static/css/custom.css' file
   customJS = []             # if ['custom.js'], load '/static/js/custom.js' file
+
+  [params.utteranc]         # utteranc is a comment system based on GitHub issues. see https://utteranc.es
+    enable = true
+    repo = "kinredon/comments-blog"    # The repo to store comments
+    issueTerm = "pathname"
 
   [params.social]                                         # 社交链接
     a-email = "mailto:kinredon@163.com"
