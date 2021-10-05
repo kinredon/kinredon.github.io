@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kinredon's blog</title><link>https://kinredon.github.io/</link><description>Recent content on kinredon's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 04 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kinredon.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://kinredon.github.io/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>https://kinredon.github.io/about/</guid><description>&lt;p>Hugo is a static site engine written in Go.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kinredon's blog</title><link>https://kinredon.github.io/</link><description>Recent content on kinredon's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Tue, 05 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kinredon.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://kinredon.github.io/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>https://kinredon.github.io/about/</guid><description>&lt;p>Hugo is a static site engine written in Go.&lt;/p>
 &lt;p>It makes use of a variety of open source projects including:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://github.com/spf13/cobra">Cobra&lt;/a>&lt;/li>
@@ -6,7 +6,268 @@
 &lt;li>&lt;a href="https://github.com/spf13/jWalterWeatherman">J Walter Weatherman&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/spf13/cast">Cast&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>Learn more and contribute on &lt;a href="https://github.com/gohugoio">GitHub&lt;/a>.&lt;/p></description></item><item><title>使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上</title><link>https://kinredon.github.io/post/how-to-publish-personal-website-on-github/</link><pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/how-to-publish-personal-website-on-github/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>Learn more and contribute on &lt;a href="https://github.com/gohugoio">GitHub&lt;/a>.&lt;/p></description></item><item><title>如何利用 org mode 写博客</title><link>https://kinredon.github.io/post/org-mode-blog-configuration/</link><pubDate>Tue, 05 Oct 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/org-mode-blog-configuration/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>阅读本文需要一定的 emacs 和 org mode 使用基础，并阅读 &lt;a href="https://kinredon.github.io/post/how-to-publish-personal-website-on-github/">使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上&lt;/a> 。&lt;/p>
+&lt;p>由于我经常使用 &lt;a href="https://orgmode.org/">org mode&lt;/a> 进行 gtd、项目管理、记录笔记，因此计划写文章也用 &lt;a href="https://orgmode.org/">org mode&lt;/a> 来实现。 &lt;a href="https://orgmode.org/">org mode&lt;/a> 通常基于编辑器 emac 使用，是一种类似于 markdown 的标记语言，通过简单的符号定义，得到格式化的文章效果，关于 &lt;a href="https://orgmode.org/">org mode&lt;/a> 的使用可以参考&lt;a href="https://www.cnblogs.com/open%5Fsource/archive/2011/07/17/2108747.html">Org-mode 简明手册&lt;/a>。 &lt;a href="https://orgmode.org/">org mode&lt;/a> 具有强大的文档导出功能，比如 pdf，markdown，html 等，如果你没有使用过 org mode，强烈建议学习使用。之前使用了 Hugo 搭建了个人博客，虽然 Hugo 原生支持 org mode，但是实际效果不是很理想，毕竟没有像 markdown 应用广泛。因此基本思路是用 org mode 写文章，然后转化为 markdown 文本，幸运的是 emacs 社区具有相应的支撑。&lt;/p>
+&lt;p>主要使用到两个工具： &lt;code>easy-hugo&lt;/code> 和 &lt;code>ox-hugo=， =easy-hugo&lt;/code> 用来管理 Hugo 的文章， &lt;code>ox-hugo&lt;/code> 用来将 org mode 文章转化为 markdown 格式。&lt;/p>
+&lt;p>关于如何使用 Hugo 搭建文章，可以查看 &lt;a href="https://kinredon.github.io/post/how-to-publish-personal-website-on-github/">使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上&lt;/a>。&lt;/p>
+&lt;h2 id="easy-hugo-的安装与使用">easy-hugo 的安装与使用&lt;/h2>
+&lt;p>查看 easy hugo 官网&lt;a href="https://github.com/masasam/emacs-easy-hugo"> emacs-easy-hugo&lt;/a>，可以发现 easy hugo 可以实现在 emac 上管理 Hugo 文章，如下图所示：&lt;/p>
+&lt;link rel="stylesheet" href="https://kinredon.github.io/css/hugo-easy-gallery.css" />
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211005133605.png" alt="Figure 1: 图源：![](https://github.com/masasam/emacs-easy-hugo/blob/master/image/easy-hugo-mode.png)"/>
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211005133605.png" itemprop="contentUrl">&lt;/a>
+&lt;figcaption>
+&lt;p>Figure 1: 图源：![](https://github.com/masasam/emacs-easy-hugo/blob/master/image/easy-hugo-mode.png)&lt;/p>
+&lt;/figcaption>
+&lt;/figure>
+&lt;/div>
+&lt;p>安装 easy hugo 通过 &lt;code>MELPA&lt;/code> ，即 &lt;code>M-x package-install easy-hugo&lt;/code> 配置如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;span class="lnt">7
+&lt;/span>&lt;span class="lnt">8
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-emacs-lisp" data-lang="emacs-lisp">&lt;span class="p">(&lt;/span>&lt;span class="nb">use-package&lt;/span> &lt;span class="nv">easy-hugo&lt;/span>
+&lt;span class="nb">:init&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">easy-hugo-basedir&lt;/span> &lt;span class="s">&amp;#34;~/Documents/sync/blogs/kinredon.github.io&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">;; 网站本地文件根目录&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">easy-hugo-url&lt;/span> &lt;span class="s">&amp;#34;https://kinredon.github.io&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">;; url 路径&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">easy-hugo-sshdomain&lt;/span> &lt;span class="s">&amp;#34;kinredon.github.io&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">easy-hugo-previewtime&lt;/span> &lt;span class="s">&amp;#34;300&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">easy-hugo-default-ext&lt;/span> &lt;span class="s">&amp;#34;.org&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="nb">:bind&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;C-c C-e&amp;#34;&lt;/span> &lt;span class="o">.&lt;/span> &lt;span class="nv">easy-hugo&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>利用 &lt;code>C-x C-e&lt;/code> 执行命令，然后 &lt;code>M-x easy-hugo&lt;/code> 进入博客管理界面。&lt;/p>
+&lt;h2 id="ox-hugo-的安装与配置">ox-hugo 的安装与配置&lt;/h2>
+&lt;p>ox-hugo 可以完美转换 org mode 到 markdown，使用 &lt;code>MeLPA&lt;/code> 安装，即 &lt;code>M-x package-install ox-hugo&lt;/code> ，配置如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;span class="lnt">6
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-emacs-lisp" data-lang="emacs-lisp">&lt;span class="p">(&lt;/span>&lt;span class="nb">use-package&lt;/span> &lt;span class="nv">ox-hugo&lt;/span>
+&lt;span class="nb">:init&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">org-hugo-base-dir&lt;/span> &lt;span class="s">&amp;#34;~/Documents/sync/blogs/kinredon.github.io&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="c1">;; 本地网站根目录&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">setq&lt;/span> &lt;span class="nv">org-hugo-default-section-directory&lt;/span> &lt;span class="s">&amp;#34;post&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="nb">:ensure&lt;/span> &lt;span class="no">t&lt;/span>
+&lt;span class="nb">:after&lt;/span> &lt;span class="nv">ox&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>至此，我们的配置完成，可以愉快地使用 org mode 撰写文章，自动转换到 markdown 格式，利用 hugo 生成静态网站，推送到 GitHub pages 上，也可以将 markdown 格式的文件传到其他支持 markdown 文章导入的平台，如知乎，微信公众号。&lt;/p>
+&lt;p>接下来介绍一下我写文章的工作流。&lt;/p>
+&lt;h2 id="工作流">工作流&lt;/h2>
+&lt;p>我将 org mode 写的文章与生成的 markdown 文章分别管理，即在网站根目录添加 &lt;code>org&lt;/code> 目录：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="nb">cd&lt;/span> kinredon.github.io
+mkdir org
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>&lt;code>org&lt;/code> 目录中存储所有使用 org mode 写的文章，转化后的 markdown 文件存储在 &lt;code>./content/post&lt;/code> 目录下，利用 easy hugo 管理。由于我不想上传 org 文件，因此我在 &lt;code>.gitignore&lt;/code> 中加入 &lt;code>org&lt;/code> 让 git 忽略此文件目录下的内容。&lt;/p>
+&lt;p>工作流步骤如下：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>撰写 org mode 文章，并存储在 &lt;code>org&lt;/code> 目录下&lt;/p>
+&lt;p>用 org mode 写文章有两种方式，一种是所有文章存储在一个 org 文件里面，不同的 subtree 为一个文章，利用 org capture 新建博文，生成模板文件，然后利用 org refile 将文章保存在不同的位置，这种方式&lt;a href="https://www.xianmin.org/post/ox-hugo/">这里&lt;/a>有讲解。我采用的方式为一篇文章一个 org 文件， 我们使用 &lt;code>snippet&lt;/code> 模板, 即添加 &lt;code>snippet&lt;/code> 模板：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-emacs-lisp" data-lang="emacs-lisp">&lt;span class="err">#&lt;/span> &lt;span class="nv">-*-&lt;/span> &lt;span class="nv">mode:&lt;/span> &lt;span class="nv">snippet&lt;/span> &lt;span class="nv">-*-&lt;/span>
+&lt;span class="err">#&lt;/span> &lt;span class="nv">name:&lt;/span> &lt;span class="nv">hugo&lt;/span>
+&lt;span class="err">#&lt;/span> &lt;span class="nv">key:&lt;/span> &lt;span class="nv">h&lt;/span>
+&lt;span class="err">#&lt;/span> &lt;span class="nv">--&lt;/span>
+&lt;span class="err">#&lt;/span>&lt;span class="nv">+HUGO_BASE_DIR:&lt;/span> &lt;span class="nv">path-to/kinredon.github.io&lt;/span>
+&lt;span class="err">#&lt;/span>&lt;span class="nv">+TITLE:&lt;/span> &lt;span class="nv">$1&lt;/span>
+&lt;span class="err">#&lt;/span>&lt;span class="nv">+DATE:&lt;/span> &lt;span class="o">`&lt;/span>&lt;span class="p">(&lt;/span>&lt;span class="nf">format-time-string&lt;/span> &lt;span class="s">&amp;#34;%Y-%m-%d&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="o">`&lt;/span>
+&lt;span class="err">#&lt;/span>&lt;span class="nv">+HUGO_AUTO_SET_LASTMOD:&lt;/span> &lt;span class="no">t&lt;/span>
+&lt;span class="err">#&lt;/span>&lt;span class="nv">+HUGO_TAGS:&lt;/span> &lt;span class="nv">$2&lt;/span>
+&lt;span class="err">#&lt;/span>&lt;span class="nv">+HUGO_CATEGORIES:&lt;/span> &lt;span class="nv">$3&lt;/span>
+&lt;span class="err">#&lt;/span>&lt;span class="nv">+HUGO_DRAFT:&lt;/span> &lt;span class="nv">false&lt;/span>
+&lt;span class="err">#&lt;/span> &lt;span class="err">#&lt;/span>&lt;span class="nv">+HUGO_MENU:&lt;/span> &lt;span class="nb">:menu&lt;/span> &lt;span class="s">&amp;#34;main&amp;#34;&lt;/span> &lt;span class="nb">:parent&lt;/span> &lt;span class="s">&amp;#34;docs&amp;#34;&lt;/span> &lt;span class="nb">:weight&lt;/span> &lt;span class="mi">3&lt;/span>
+&lt;span class="err">#&lt;/span>&lt;span class="nv">+options:&lt;/span> &lt;span class="nv">author:nil&lt;/span>
+&lt;span class="err">#&lt;/span>&lt;span class="nv">+HUGO_CUSTOM_FRONT_MATTER:&lt;/span> &lt;span class="nb">:katex&lt;/span> &lt;span class="nv">true&lt;/span>
+&lt;span class="nv">$0&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>保存后，我们新建 org 文件后，输入 &lt;code>h&lt;/code> 然后使用 &lt;code>tab&lt;/code> 就可生成模板文件，如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-text" data-lang="text">#+HUGO_BASE_DIR: path-to/kinredon.github.io
+#+TITLE:
+#+DATE: 2021-10-05
+#+HUGO_AUTO_SET_LASTMOD: t
+#+HUGO_TAGS:
+#+HUGO_CATEGORIES:
+#+HUGO_DRAFT: false
+# #+HUGO_MENU: :menu &amp;#34;main&amp;#34; :parent &amp;#34;docs&amp;#34; :weight 3
+#+options: author:nil
+#+HUGO_CUSTOM_FRONT_MATTER: :katex true
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>导出 markdown 文件， &lt;code>C-c C-e H h&lt;/code> 导出&lt;/p>
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211005140343.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211005140343.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;/li>
+&lt;li>
+&lt;p>预览&lt;/p>
+&lt;p>通过 &lt;code>M-x easy-hugo&lt;/code> 打开 easy hugo，然后选中新生成的文章，然后按 &lt;code>p&lt;/code> 即可预览生成的文章。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>部署&lt;/p>
+&lt;p>利用 &lt;a href="https://kinredon.github.io/post/how-to-publish-personal-website-on-github/">使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上&lt;/a> 中的 &lt;code>deploy.sh&lt;/code> 将文章推送到远程服务器。&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">&lt;span class="cp">#!/bin/bash
+&lt;/span>&lt;span class="cp">&lt;/span>git add .
+git add org/img &lt;span class="c1"># 用来存储图像的目录，后续将会用到&lt;/span>
+git commit -m &lt;span class="s2">&amp;#34;update article&amp;#34;&lt;/span>
+git push
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>至此，可以在远程访问个人网站啦。&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="其它">其它&lt;/h2>
+&lt;p>在写作过程中发现一些小问题，比如文章图片的管理，文献管理等，这里介绍一下我的解决方案，后续遇到新的问题，再持续更新。&lt;/p>
+&lt;h3 id="图片管理">图片管理&lt;/h3>
+&lt;p>我将图片放在 &lt;code>./org/img&lt;/code> 目录下，普通的图片直接放在该目录下，然后在 org 文件中引用即可，然而我们写文章时常常喜欢截图，每次截图后保存非常的麻烦，因此利用一个 elisp 小函数实现该功能：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;span class="lnt">11
+&lt;/span>&lt;span class="lnt">12
+&lt;/span>&lt;span class="lnt">13
+&lt;/span>&lt;span class="lnt">14
+&lt;/span>&lt;span class="lnt">15
+&lt;/span>&lt;span class="lnt">16
+&lt;/span>&lt;span class="lnt">17
+&lt;/span>&lt;span class="lnt">18
+&lt;/span>&lt;span class="lnt">19
+&lt;/span>&lt;span class="lnt">20
+&lt;/span>&lt;span class="lnt">21
+&lt;/span>&lt;span class="lnt">22
+&lt;/span>&lt;span class="lnt">23
+&lt;/span>&lt;span class="lnt">24
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-emacs-lisp" data-lang="emacs-lisp">&lt;span class="p">(&lt;/span>&lt;span class="nb">defun&lt;/span> &lt;span class="nv">my/file-paste&lt;/span> &lt;span class="p">()&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">interactive&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">let*&lt;/span> &lt;span class="p">((&lt;/span>&lt;span class="nv">org-fpath&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nf">buffer-file-name&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nf">window-buffer&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nf">minibuffer-selected-window&lt;/span>&lt;span class="p">))))&lt;/span>
+&lt;span class="c1">;; (dst_dpath (expand-file-name (concat (if org-fpath (file-name-base org-fpath) &amp;#34;~/Desktop/scratch&amp;#34;) &amp;#34;_&amp;#34; &amp;#34;assets&amp;#34;)))&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nv">dst_dpath&lt;/span> &lt;span class="s">&amp;#34;./img&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nv">src_fpath&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nv">string-trim&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nv">shell-command-to-string&lt;/span> &lt;span class="s">&amp;#34;/Users/kinredon/Documents/Scripts/clipboard/clipboard_file.sh&amp;#34;&lt;/span>&lt;span class="p">)))&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nv">src_name&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nv">file-name-base&lt;/span> &lt;span class="nv">src_fpath&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nv">src_ext&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nv">file-name-extension&lt;/span> &lt;span class="nv">src_fpath&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nv">dst_fpath&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nf">concat&lt;/span> &lt;span class="nv">dst_dpath&lt;/span> &lt;span class="s">&amp;#34;/&amp;#34;&lt;/span> &lt;span class="nv">src_name&lt;/span> &lt;span class="s">&amp;#34;_&amp;#34;&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nf">format-time-string&lt;/span> &lt;span class="s">&amp;#34;%Y%m%d%H%M%S&amp;#34;&lt;/span>&lt;span class="p">)&lt;/span> &lt;span class="s">&amp;#34;.&amp;#34;&lt;/span> &lt;span class="nv">src_ext&lt;/span>&lt;span class="p">)))&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">when&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nv">not&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nf">file-exists-p&lt;/span> &lt;span class="nv">dst_dpath&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nv">make-directory&lt;/span> &lt;span class="nv">dst_dpath&lt;/span>&lt;span class="p">))&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">if&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nf">file-exists-p&lt;/span> &lt;span class="nv">src_fpath&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">progn&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nf">copy-file&lt;/span> &lt;span class="nv">src_fpath&lt;/span> &lt;span class="nv">dst_fpath&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nf">insert&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nf">concat&lt;/span> &lt;span class="s">&amp;#34;[[file:&amp;#34;&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nv">file-relative-name&lt;/span> &lt;span class="nv">dst_fpath&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="nf">file-name-directory&lt;/span> &lt;span class="nv">org-fpath&lt;/span>&lt;span class="p">))&lt;/span> &lt;span class="s">&amp;#34;]]&amp;#34;&lt;/span>&lt;span class="p">)))&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nf">message&lt;/span> &lt;span class="nv">src_fpath&lt;/span>&lt;span class="p">))))&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="nb">use-package&lt;/span> &lt;span class="nv">org&lt;/span>
+&lt;span class="nb">:ensure&lt;/span> &lt;span class="no">nil&lt;/span>
+&lt;span class="nb">:mode&lt;/span> &lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;\\.org\\&amp;#39;&amp;#34;&lt;/span> &lt;span class="o">.&lt;/span> &lt;span class="nv">org-mode&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="nb">:bind&lt;/span>
+&lt;span class="p">(&lt;/span>
+&lt;span class="p">(&lt;/span>&lt;span class="s">&amp;#34;C-x C-y&amp;#34;&lt;/span> &lt;span class="o">.&lt;/span> &lt;span class="nv">my/file-paste&lt;/span>&lt;span class="p">)&lt;/span>
+&lt;span class="p">))&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在 org 文件中， &lt;code>C-x C-y&lt;/code> 自动调用 &lt;code>file-paste&lt;/code> 函数，将截图自动存储在 &lt;code>img&lt;/code> 目录下，然后生成对应的引用。&lt;/p>
+&lt;h3 id="文献应用">文献应用&lt;/h3>
+&lt;p>由于我喜欢写论文阅读笔记，常常需要应用文献，关于文献管理，我使用的 &lt;code>org-ref&lt;/code> 统一管理在一个 &lt;code>reference.bib&lt;/code> 文件里，但是发现 &lt;code>org-ref&lt;/code> 对 &lt;code>ox-hugo&lt;/code> 似乎不太支持，因此使用 &lt;code>citeproc-org&lt;/code> 进行简单的配置即可正常到处参考文献，如下：&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-emacs-lisp" data-lang="emacs-lisp">&lt;span class="p">(&lt;/span>&lt;span class="nv">citeproc-org-setup&lt;/span>&lt;span class="p">)&lt;/span>&lt;span class="c1">;; 可以将其写入配置文件中，或执行&lt;/span>
+&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>在相应位置中插入参考文献，调用 &lt;code>M-x org-ref-helm-insert-cite-link&lt;/code> 即可，导出文章即可以看到参考文献成功导出。&lt;/p>
+&lt;h2 id="参考">参考&lt;/h2>
+&lt;ol>
+&lt;li>&lt;a href="https://zhuanlan.zhihu.com/p/54705090">Emacs Org-mode学术写作&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.xianmin.org/post/ox-hugo/">博客写作流程之工具篇： emacs, orgmode, hugo &amp;amp; ox-hugo&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://q3yi.me/post/build-blog-with-orgmode-hugo-and-github-pages/">使用orgmode+hugo+github pages搭建博客&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://zlearning.netlify.app/linux/emacs/emacs-hugo-academic.html">使用Emacs和Hugo academic主题&lt;/a>&lt;/li>
+&lt;/ol></description></item><item><title>使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上</title><link>https://kinredon.github.io/post/how-to-publish-personal-website-on-github/</link><pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/how-to-publish-personal-website-on-github/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>相信很多人都有搭建个人网站的需求，可能是想写自己的博文，传达一些思想给社区。也有可能你是一名科研工作者，需要搭建个人学术主页展示科研成果。我也或多或少出于以上原因，选择搭建了个人网站，搭建过程中出现了许多问题，因此记录和分享，避免下次踩坑。Anyway，本文记录使用搭建个人博客的全过程，包括网站工具 &lt;a href="https://gohugo.io/">Hugo&lt;/a> 的介绍和使用设置，以及如何将个人网站发布在免费托管平台，也就是 GitHub Pages 上。&lt;/p>
 &lt;p>我选择 Hugo 的原因主要有三点：&lt;/p>
 &lt;ul>
@@ -16,7 +277,7 @@
 &lt;/ul>
 &lt;p>选择 GitHub Pages 的原因就更简单了，免费又好用。&lt;/p>
 &lt;h2 id="hugo-的安装和使用">Hugo 的安装和使用&lt;/h2>
-&lt;p>Hugo 宣传号称是世界上最快构建网站的框架，也是最流行的静态网站生产工具之一。&lt;/p>
+&lt;p>Hugo 宣传号称是世界上最快构建网站的框架，也是最流行的静态网站生成工具之一。&lt;/p>
 &lt;h3 id="安装-hugo">安装 Hugo&lt;/h3>
 &lt;p>由于我的操作系统是 MacOs 因此安装起来特别简单：&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
@@ -69,14 +330,14 @@ cp themes/jane/exampleSite/config.toml ./
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">hugo server
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;h3 id="个人配置和网站生产">个人配置和网站生产&lt;/h3>
+&lt;/div>&lt;h3 id="个人配置和网站生成">个人配置和网站生成&lt;/h3>
 &lt;p>配置文件在网站根目录 &lt;code>quickstart&lt;/code> 下 &lt;code>config.toml&lt;/code> , 根据自身需求进行修改。在 jane 主题下的 &lt;code>exampleSite&lt;/code> 文件夹中的文件可作为参考。默认的文章将存储在 &lt;code>./content/post&lt;/code> 中，每当写完文章，运行 &lt;code>hugo&lt;/code> 命令，Hugo 将自动生成静态网站到 &lt;code>public&lt;/code> 文件夹中，我们只需要将该文件夹的内容发布在网络上即可。&lt;/p>
 &lt;p>更多关于主题的配置可以参考 &lt;a href="https://github.com/xianmin/hugo-theme-jane/blob/master/README-zh.md">jane README.md&lt;/a>。&lt;/p>
 &lt;h2 id="github-pages">GitHub Pages&lt;/h2>
-&lt;p>我个人经常使用 GitHub，也见到很多大佬利用 GitHub pages 挂载自己的个人网站，发现配置起来也不复再，因此选择使用 GitHub pages 来进行配置，关于 GitHub pages 可以查看&lt;a href="https://pages.github.com/">官网&lt;/a>，主要包括四个步骤：&lt;/p>
+&lt;p>我个人经常使用 GitHub，也见到很多大佬利用 GitHub pages 挂载自己的个人网站，发现配置起来也很简单，因此选择使用 GitHub pages 来进行配置，关于 GitHub pages 可以查看&lt;a href="https://pages.github.com/">官网&lt;/a>，主要包括四个步骤：&lt;/p>
 &lt;ol>
 &lt;li>
-&lt;p>创建一个与 &lt;code>username&lt;/code> 同名的 &lt;strong>空&lt;/strong> &lt;code>username.github.io&lt;/code> 仓库，包含任何内容，包括 &lt;code>readme.md=，比如我的用户名为 =kinredon&lt;/code>, 因此我创建了一个仓库，名为 &lt;code>kinredon.github.io&lt;/code>;&lt;/p>
+&lt;p>创建一个与 &lt;code>username&lt;/code> 同名的 &lt;strong>空&lt;/strong> &lt;code>username.github.io&lt;/code> 仓库，不包含任何内容，如 &lt;code>readme.md=，比如我的用户名为 =kinredon&lt;/code>, 因此我创建了一个仓库，名为 &lt;code>kinredon.github.io&lt;/code>;&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>克隆仓库到本地&lt;/p>
@@ -167,12 +428,12 @@ cp -rf quickstart/* kinredon.github.io
 &lt;pre tabindex="0" class="chroma">&lt;code class="language-shell" data-lang="shell">ssh-keygen -t rsa -b &lt;span class="m">4096&lt;/span> -C &lt;span class="s2">&amp;#34;&lt;/span>&lt;span class="k">$(&lt;/span>git config user.email&lt;span class="k">)&lt;/span>&lt;span class="s2">&amp;#34;&lt;/span> -f gh-pages -N &lt;span class="s2">&amp;#34;&amp;#34;&lt;/span>
 &lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
 &lt;/div>
-&lt;/div>&lt;p>将生成的私钥文件 &lt;code>gh-pages&lt;/code> (注意不是公钥 &lt;code>gh-pages&lt;/code>) 中的内容复制填写到 GitHub 仓库设置中，即在 &lt;code>kinredon.github.io&lt;/code> 项目主页中，找到 Repository Settings -&amp;gt; Secrets -&amp;gt; 添加这个私钥的内容并命名为 &lt;code>ACTIONS_DEPLOY_KEY&lt;/code> 。
+&lt;/div>&lt;p>将生成的私钥文件 &lt;code>gh-pages&lt;/code> (注意不是公钥 &lt;code>gh-pages.pub&lt;/code>) 中的内容复制填写到 GitHub 仓库设置中，即在 &lt;code>kinredon.github.io&lt;/code> 项目主页中，找到 Repository Settings -&amp;gt; Secrets -&amp;gt; 添加这个私钥的内容并命名为 &lt;code>ACTIONS_DEPLOY_KEY&lt;/code> 。
 然后在 &lt;code>kinredon.github.io&lt;/code> 项目主页中，找到 Repository Settings -&amp;gt; Deploy Keys -&amp;gt; 添加这个公钥的内容，命名为 &lt;code>ACTIONS_DEPLOY_KEY&lt;/code> ，并勾选 Allow write access。&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>配置 workflow
-创建 workflow 文件&lt;/p>
+&lt;p>配置 workflow&lt;/p>
+&lt;p>创建 workflow 文件&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
@@ -258,8 +519,8 @@ publish_branch: main
 &lt;/div>&lt;p>注意，如果你的仓库是 &lt;code>master&lt;/code> 分支作为主分支，将 &lt;code>publish_branch&lt;/code> 后面的 &lt;code>main&lt;/code> 修改为 &lt;code>master&lt;/code> ;&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>将 source 分支发送到远程
-发送脚本 &lt;code>deploy.sh&lt;/code> :&lt;/p>
+&lt;p>将 source 分支发送到远程&lt;/p>
+&lt;p>发送脚本 &lt;code>deploy.sh&lt;/code> :&lt;/p>
 &lt;div class="highlight">&lt;div class="chroma">
 &lt;table class="lntable">&lt;tr>&lt;td class="lntd">
 &lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
