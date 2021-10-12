@@ -1,7 +1,7 @@
 +++
 title = "使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上"
 date = 2021-10-04
-lastmod = 2021-10-05T13:05:33+08:00
+lastmod = 2021-10-05T15:43:51+08:00
 tags = ["Hugo", "Blog", "Website"]
 categories = ["Hugo"]
 draft = false
@@ -79,17 +79,20 @@ hugo server
 我个人经常使用 GitHub，也见到很多大佬利用 GitHub pages 挂载自己的个人网站，发现配置起来也很简单，因此选择使用 GitHub pages 来进行配置，关于 GitHub pages 可以查看[官网](https://pages.github.com/)，主要包括四个步骤：
 
 1.  创建一个与 `username` 同名的 **空** `username.github.io` 仓库，不包含任何内容，如 `readme.md=，比如我的用户名为 =kinredon`, 因此我创建了一个仓库，名为 `kinredon.github.io`;
+
 2.  克隆仓库到本地
 
     ```shell
     git clone https://github.com/kinredon/kinredon.github.io
     ```
+
 3.  添加个人网站内容到该仓库
 
     ```shell
     # copy 生成的网站内容到仓库文件夹下
     cp -rf quickstart/public/* kinredon.github.io/
     ```
+
 4.  将文件内容同步更新到 GitHub 服务器上
 
     ```shell
@@ -113,6 +116,7 @@ hugo server
 1.  在 GitHub 上的个人网站仓库 `kinredon.github.io` 新建 `source` 分支
 
     {{< figure src="/ox-hugo/pngpaste_clipboard_file_20211004154805.png" caption="Figure 1: 创建 source 分支，由于我已经创建过，所以这里以 source-1 为例" >}}
+
 2.  清除文件夹 `kinredon.github.io` 中的内容，并将个人网站 `quickstart` 中的所有内容 copy 到 `kinredon.github.io` ：
 
     ```shell
@@ -120,6 +124,7 @@ hugo server
     rm -rf kinredon.github.io/*
     cp -rf quickstart/* kinredon.github.io
     ```
+
 3.  生成 `ACTIONS_DEPLOY_KEY`
 
     ```shell
@@ -128,6 +133,7 @@ hugo server
 
     将生成的私钥文件 `gh-pages` (注意不是公钥 `gh-pages.pub`) 中的内容复制填写到 GitHub 仓库设置中，即在 `kinredon.github.io` 项目主页中，找到 Repository Settings -> Secrets -> 添加这个私钥的内容并命名为 `ACTIONS_DEPLOY_KEY` 。
     然后在 `kinredon.github.io` 项目主页中，找到 Repository Settings -> Deploy Keys -> 添加这个公钥的内容，命名为 `ACTIONS_DEPLOY_KEY` ，并勾选 Allow write access。
+
 4.  配置 workflow
 
     创建 workflow 文件
