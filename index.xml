@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kinredon's blog</title><link>https://kinredon.github.io/</link><description>Recent content on kinredon's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Wed, 13 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kinredon.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://kinredon.github.io/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>https://kinredon.github.io/about/</guid><description>&lt;p>Hugo is a static site engine written in Go.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kinredon's blog</title><link>https://kinredon.github.io/</link><description>Recent content on kinredon's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 05 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://kinredon.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://kinredon.github.io/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>https://kinredon.github.io/about/</guid><description>&lt;p>Hugo is a static site engine written in Go.&lt;/p>
 &lt;p>It makes use of a variety of open source projects including:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://github.com/spf13/cobra">Cobra&lt;/a>&lt;/li>
@@ -6,7 +6,63 @@
 &lt;li>&lt;a href="https://github.com/spf13/jWalterWeatherman">J Walter Weatherman&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/spf13/cast">Cast&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>Learn more and contribute on &lt;a href="https://github.com/gohugoio">GitHub&lt;/a>.&lt;/p></description></item><item><title>参加VALSE 2021的几点总结</title><link>https://kinredon.github.io/post/valse2021/</link><pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/valse2021/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>Learn more and contribute on &lt;a href="https://github.com/gohugoio">GitHub&lt;/a>.&lt;/p></description></item><item><title>【收藏向】快速完成在线会议视频录制（视频转换 + 字幕制作）</title><link>https://kinredon.github.io/post/presentation_for_online_academic_conference/</link><pubDate>Fri, 05 Nov 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/presentation_for_online_academic_conference/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>最近由于疫情原因，国际出行难度变高，不少 AI 学术会议采用线上的形势，比如 ICCV, CVPR 等等。线上会议通常不仅要求 oral paper 录制视频讲解论文内容，还要求 poster 同样需要录制视频内容。基于此，本文记录如何快速进行视频录制，并进行字幕的制作。建议收藏，下次遇到线上会议需要录制视频，直接按照步骤开始即可。在这个过程中，有更好地工具也欢迎私信我。&lt;/p>
+&lt;p>主要的过程和使用的工具如下：&lt;/p>
+&lt;ol>
+&lt;li>视频录制：做好 PPT 后，在每一页 PPT 录制对应的音频，导出时选择导出方式为 mp4 即可；&lt;/li>
+&lt;li>字幕制作：【网易见外】智能识别字幕，在 ArcTime 中对字幕进行矫正，然后导出；&lt;/li>
+&lt;/ol>
+&lt;h2 id="视频录制">视频录制&lt;/h2>
+&lt;p>我认为使用 PPT 每一页录制音频后导出 mp4 做线上学术视频有两个主要的好处：&lt;/p>
+&lt;ol>
+&lt;li>使用方便，节省时间&lt;/li>
+&lt;li>方便修改讲解内容：想象一下如果使用屏幕录制软件制作视频，中间部分讲错了发挥不好又需要重新录制，PPT 录制只需要录制对应页的音频即可；&lt;/li>
+&lt;/ol>
+&lt;p>对每一页 slide 录制对应的音频，通过工具栏：插入（insert）&amp;ndash;&amp;gt;音频（Audio）&amp;ndash;&amp;gt; 录制音频（Audio Record）实现，录制完成后可以看到一个播放的小图标：&lt;/p>
+&lt;link rel="stylesheet" href="https://kinredon.github.io/css/hugo-easy-gallery.css" />
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211105142108.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211105142108.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;p>可以反复听，不满意再重新录制。录制完成后导出，选择导出为 mp4 文件后可以得到一个文件后缀为 .mp4 的文件（不知道为什么，我的 MacBook 无法完成这一步，用同学的 Windows 电脑可以，orz）。&lt;/p>
+&lt;h2 id="字幕制作">字幕制作&lt;/h2>
+&lt;p>这里推荐使用&lt;a href="https://jianwai.youdao.com/">网易见外&lt;/a>,可以直接上传视频后得到对应识别好的英文字幕文件。有人要说了，稿子我都写了要它识别干嘛？其实这里主要是为了得到分割好的片段，比如视频哪一段对应哪一段字幕，不用自己在剪辑软件里面一个一个片段黏贴，我们只需要修正一下识别错误的地方。步骤如下：&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>申请账号 &lt;a href="https://jianwai.youdao.com/">网易见外&lt;/a>，省略。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>选择新建项目，选择视频转写生成字幕文件，生成之后可以进行在线矫正，最终导出字幕。&lt;/p>
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211105143422.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211105143422.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211105143530.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211105143530.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="字幕嵌入">字幕嵌入&lt;/h2>
+&lt;p>有了字幕文件，接下来该将字幕文件嵌入到视频中了，这里使用 &lt;a href="https://arctime.org/">ArcTime Pro&lt;/a> 软件。只是嵌入字幕是非常简单的，视频导入进去后，把字幕导入，然后直接导出就可以了。这其中可能有个问题：文本太长超出屏幕显示范围，可以直接把 &lt;code>\n&lt;/code> 放在你想换行位置，这样问题就得到解决了。&lt;/p>
+&lt;h2 id="总结">总结&lt;/h2>
+&lt;p>这篇文章主要讲怎么快速的制作一个在线学术会议的视频并添加字幕，为了让研究者专注于视频内容的创作，简化整个过程。如果有些会议有特殊的要求，比如需要视频中出现人脸，可以使用腾讯会议这样的工具。或者大家觉得口语不太好，不想念稿子，也可以使用 &lt;a href="https://aws.amazon.com/cn/polly/">Amazon Polly&lt;/a> 这样的文本转语音软件。&lt;/p></description></item><item><title>参加VALSE 2021的几点总结</title><link>https://kinredon.github.io/post/valse2021/</link><pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/valse2021/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>很幸运能有机会前往杭州参加 VALSE 2021，之前就一直关注 VALSE 的线上活动，也在线听了不少 VALSE 的 webinar，都是计算机视觉各个研究方向的优秀青年学者来做讲座。VALSE 2021 年度大会，邀请了很多大佬做 tutorial 和 workshop 的讲解，整体参与下来，也算收益良多。接下来简单聊一下我的感想并做几点总结。&lt;/p>
 &lt;h2 id="几点总结">几点总结&lt;/h2>
 &lt;p>&lt;strong>&lt;strong>徐宗本院士：如何突破机器学习的先验假设？&lt;/strong>&lt;/strong> 起初我只当这是一个普通的讲座，但从一开始就感受到了院士的气场，自信而不张扬，听出了其对机器学习的深刻认识，瞬间激起了我的兴趣。讲座一开始给出了一个大一统的公式指出现有机器学习范式主要包括五个部分：模型假设空间、损失函数、正则项、数据空间、优化算法，并指出了各个部分的局限性，最终针对这五个部分给出了一些解决方案，相应的探索也有些突破。很多部分之前都没听说过，但不明觉厉，这是真正的具有前瞻性的研究，令人大开眼界。&lt;/p>
