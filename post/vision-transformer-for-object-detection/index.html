@@ -2,8 +2,7 @@
 <head>
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="IE=edge">
-<title>Vision Transformer 在目标检测上的探索，DETR 系列文章解读（一） - kinredon's blog</title>
-<meta name=renderer content="webkit">
+<title>Vision Transformer 在目标检测上的探索，DETR 系列文章解读（一） - kinredon's blog</title><meta name=renderer content="webkit">
 <meta name=viewport content="width=device-width,initial-scale=1,user-scalable=yes">
 <meta name=MobileOptimized content="width">
 <meta name=HandheldFriendly content="true">
@@ -16,7 +15,7 @@
 <meta name=author content="kinredon">
 <meta name=description content="前言 DETR（Detection Transformer） 将 CNN 与 Transformer 相结合，把检测任务当做集合预测 （set prediction） 任务，实现真正的">
 <meta name=keywords content="blog,computer vision,deep learning">
-<meta name=generator content="Hugo 0.92.0">
+<meta name=generator content="Hugo 0.93.0">
 <link rel=canonical href=https://kinredon.github.io/post/vision-transformer-for-object-detection/>
 <link rel=icon href=/favicon.ico>
 <link rel=stylesheet href=/sass/jane.min.fa4b2b9f31b5c6d0b683db81157a9226e17b06e61911791ab547242a4a0556f2.css integrity="sha256-+ksrnzG1xtC2g9uBFXqSJuF7BuYZEXkatUckKkoFVvI=" media=screen crossorigin=anonymous>
@@ -34,19 +33,15 @@
 <meta name=twitter:title content="Vision Transformer 在目标检测上的探索，DETR 系列文章解读（一）">
 <meta name=twitter:description content="前言 DETR（Detection Transformer） 将 CNN 与 Transformer 相结合，把检测任务当做集合预测 （set prediction） 任务，实现真正的"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
 <script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head>
-<body>
+</head><body>
 <div id=mobile-navbar class=mobile-navbar>
 <div class=mobile-header-logo>
 <a href=/ class=logo>kinredon</a>
-</div>
-<div class=mobile-navbar-icon>
+</div><div class=mobile-navbar-icon>
 <span></span>
 <span></span>
 <span></span>
-</div>
-</div>
-<nav id=mobile-menu class="mobile-menu slideout-menu">
+</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
 <ul class=mobile-menu-list>
 <li class=mobile-menu-item>
 <a class=menu-item-link href=https://kinredon.github.io/>Home</a>
@@ -58,331 +53,167 @@
 <a class=menu-item-link href=https://kinredon.github.io/categories/>Categories</a>
 </li><li class=mobile-menu-item>
 <a class=menu-item-link href=https://kinredon.github.io/about/>About</a>
-</li>
-</ul>
-</nav>
-<link rel=stylesheet href=/lib/photoswipe/photoswipe.min.css>
+</li></ul></nav><link rel=stylesheet href=/lib/photoswipe/photoswipe.min.css>
 <link rel=stylesheet href=/lib/photoswipe/default-skin/default-skin.min.css>
 <div class=pswp tabindex=-1 role=dialog aria-hidden=true>
-<div class=pswp__bg></div>
-<div class=pswp__scroll-wrap>
+<div class=pswp__bg></div><div class=pswp__scroll-wrap>
 <div class=pswp__container>
-<div class=pswp__item></div>
-<div class=pswp__item></div>
-<div class=pswp__item></div>
-</div>
-<div class="pswp__ui pswp__ui--hidden">
+<div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden">
 <div class=pswp__top-bar>
-<div class=pswp__counter></div>
-<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
 <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
 <div class=pswp__preloader>
 <div class=pswp__preloader__icn>
 <div class=pswp__preloader__cut>
-<div class=pswp__preloader__donut></div>
-</div>
-</div>
-</div>
-</div>
-<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-<div class=pswp__share-tooltip></div>
-</div>
-<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+<div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+<div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
 </button>
 <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
 </button>
 <div class=pswp__caption>
-<div class=pswp__caption__center></div>
-</div>
-</div>
-</div>
-</div>
-<header id=header class="header container">
+<div class=pswp__caption__center></div></div></div></div></div><header id=header class="header container">
 <div class=logo-wrapper>
 <a href=/ class=logo>
 kinredon
 </a>
-</div>
-<nav class=site-navbar>
+</div><nav class=site-navbar>
 <ul id=menu class=menu>
 <li class=menu-item>
 <a class=menu-item-link href=https://kinredon.github.io/>Home</a>
-</li>
-<li class=menu-item>
+</li><li class=menu-item>
 <a class=menu-item-link href=https://kinredon.github.io/post/>Archives</a>
-</li>
-<li class=menu-item>
+</li><li class=menu-item>
 <a class=menu-item-link href=https://kinredon.github.io/tags/>Tags</a>
-</li>
-<li class=menu-item>
+</li><li class=menu-item>
 <a class=menu-item-link href=https://kinredon.github.io/categories/>Categories</a>
-</li>
-<li class=menu-item>
+</li><li class=menu-item>
 <a class=menu-item-link href=https://kinredon.github.io/about/>About</a>
-</li>
-</ul>
-</nav>
-</header>
-<div id=mobile-panel>
+</li></ul></nav></header><div id=mobile-panel>
 <main id=main class="main bg-llight">
 <div class=content-wrapper>
 <div id=content class="content container">
 <article class="post bg-white">
 <header class=post-header>
-<h1 class=post-title>Vision Transformer 在目标检测上的探索，DETR 系列文章解读（一）</h1>
-<div class=post-meta>
+<h1 class=post-title>Vision Transformer 在目标检测上的探索，DETR 系列文章解读（一）</h1><div class=post-meta>
 <time datetime=2021-12-16 class=post-time>
 2021-12-16
 </time>
 <div class=post-category>
 <a href=https://kinredon.github.io/categories/detr/> DETR </a>
-</div>
-<span class=more-meta> 约 3600 字 </span>
+</div><span class=more-meta> 约 3600 字 </span>
 <span class=more-meta> 预计阅读 8 分钟 </span>
-</div>
-</header>
-<div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2>
-<div class=post-toc-content>
+</div></header><div class=post-toc id=post-toc>
+<h2 class=post-toc-title>文章目录</h2><div class=post-toc-content>
 <nav id=TableOfContents>
 <ul>
-<li><a href=#前言>前言</a></li>
-<li><a href=#正文>正文</a>
+<li><a href=#前言>前言</a></li><li><a href=#正文>正文</a>
 <ul>
-<li><a href=#二分图匹配-bipartite-matching-loss-的设计>二分图匹配 bipartite matching loss 的设计</a></li>
-<li><a href=#detr-模型结构>DETR 模型结构</a></li>
-<li><a href=#实验结果>实验结果</a></li>
-</ul>
-</li>
-<li><a href=#个人评价>个人评价</a></li>
-</ul>
-</nav>
-</div>
-</div>
-<div class=post-content>
-<h2 id=前言>前言</h2>
-<p>DETR（Detection Transformer） 将 CNN 与 Transformer 相结合，把检测任务当做集合预测 （set prediction） 任务，实现真正的 end-to-end 目标检测模型，即不需要任何的后处理阶段，比如 NMS 去除冗余框，直接从图片的原始像素得到最终的目标框和坐标预测。DETR 是 2020 年 5 月的文章，是早于 ViT （2020年10月），可以说 DETR 是 Vision Transformer 的奠基作品之一，不仅改变了大家对目标检测的一些固有看法，而且给后续 Vision Transformer 的发展具有重要意义，目前的引用量也有 1200+ （21 年 12 月）。</p>
-<h2 id=正文>正文</h2>
-<link rel=stylesheet href=/css/hugo-easy-gallery.css>
+<li><a href=#二分图匹配-bipartite-matching-loss-的设计>二分图匹配 bipartite matching loss 的设计</a></li><li><a href=#detr-模型结构>DETR 模型结构</a></li><li><a href=#实验结果>实验结果</a></li></ul></li><li><a href=#个人评价>个人评价</a></li></ul></nav></div></div><div class=post-content>
+<h2 id=前言>前言</h2><p>DETR（Detection Transformer） 将 CNN 与 Transformer 相结合，把检测任务当做集合预测 （set prediction） 任务，实现真正的 end-to-end 目标检测模型，即不需要任何的后处理阶段，比如 NMS 去除冗余框，直接从图片的原始像素得到最终的目标框和坐标预测。DETR 是 2020 年 5 月的文章，是早于 ViT （2020年10月），可以说 DETR 是 Vision Transformer 的奠基作品之一，不仅改变了大家对目标检测的一些固有看法，而且给后续 Vision Transformer 的发展具有重要意义，目前的引用量也有 1200+ （21 年 12 月）。</p><h2 id=正文>正文</h2><link rel=stylesheet href=/css/hugo-easy-gallery.css>
 <div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211216110906.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211216110906.png itemprop=contentUrl></a>
-</figure>
-</div>
-<p>如上图所示，DETR 整个结构非常简单，主要包括一个 CNN 模块用于从图像中提取特征和一个 Transformer encoder-decoder 模块直接产生一系列的目标框预测，图中的二分图匹配（bipartite matching）loss便是不会产生冗余框预测从而去除 NMS 的关键。具体来说，给定一张图片，通过 CNN 提取特征，将特征拉平作为序列输入到 transformer 中，然后直接预测 N 个目标框，每一个预测的目标框将与 ground truth 进行一对一的最优匹配，没有匹配上的预测框将被赋为空，即为图中的 no object，其实就是背景类。</p>
-<p>通过前面对整个架构的了解，可以看出 DETR 主要有两个关键的部分：</p>
-<ol>
-<li>二分图匹配 bipartite matching loss 的设计</li>
-<li>DETR 模型结构</li>
-</ol>
-<p>接下来对这两部分进行详细的介绍。</p>
-<h3 id=二分图匹配-bipartite-matching-loss-的设计>二分图匹配 bipartite matching loss 的设计</h3>
-<p>bipartite matching loss 的核心就是做匹配，把预测的结果和 ground truth 做一一匹配。假设有 N 个预测，每个预测包含坐标框和类别概率，ground truth 也是有 N 个元素的集合（通常 ground truth 目标框的个数少于预测的目标框，剩余的部分用 no object 填充）。为了找到最优匹配，通过搜索预测结果中 N 元素的最优排列，使得两个集合对应元素有最小的 cost:</p>
-<div class=box>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211216110906.png itemprop=contentUrl></a>
+</figure></div><p>如上图所示，DETR 整个结构非常简单，主要包括一个 CNN 模块用于从图像中提取特征和一个 Transformer encoder-decoder 模块直接产生一系列的目标框预测，图中的二分图匹配（bipartite matching）loss便是不会产生冗余框预测从而去除 NMS 的关键。具体来说，给定一张图片，通过 CNN 提取特征，将特征拉平作为序列输入到 transformer 中，然后直接预测 N 个目标框，每一个预测的目标框将与 ground truth 进行一对一的最优匹配，没有匹配上的预测框将被赋为空，即为图中的 no object，其实就是背景类。</p><p>通过前面对整个架构的了解，可以看出 DETR 主要有两个关键的部分：</p><ol>
+<li>二分图匹配 bipartite matching loss 的设计</li><li>DETR 模型结构</li></ol><p>接下来对这两部分进行详细的介绍。</p><h3 id=二分图匹配-bipartite-matching-loss-的设计>二分图匹配 bipartite matching loss 的设计</h3><p>bipartite matching loss 的核心就是做匹配，把预测的结果和 ground truth 做一一匹配。假设有 N 个预测，每个预测包含坐标框和类别概率，ground truth 也是有 N 个元素的集合（通常 ground truth 目标框的个数少于预测的目标框，剩余的部分用 no object 填充）。为了找到最优匹配，通过搜索预测结果中 N 元素的最优排列，使得两个集合对应元素有最小的 cost:</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211225160728.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211225160728.png itemprop=contentUrl></a>
-</figure>
-</div>
-<p>即找到 N 个预测结果与 ground truth 一一对应的匹配损失，得到 ground truth 每一个元素对应预测结果最小代价的 index。这样的匹配算法其实就是匈牙利匹配，Hungarian algorithm, 很多代码库都有相应的实现，直接可以利用。这里的 \(\mathcal{L}_{match}\) 包含了预测分类分数和定位两个指标，如下：</p>
-<div class=box>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211225160728.png itemprop=contentUrl></a>
+</figure></div><p>即找到 N 个预测结果与 ground truth 一一对应的匹配损失，得到 ground truth 每一个元素对应预测结果最小代价的 index。这样的匹配算法其实就是匈牙利匹配，Hungarian algorithm, 很多代码库都有相应的实现，直接可以利用。这里的 \(\mathcal{L}_{match}\) 包含了预测分类分数和定位两个指标，如下：</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211225160754.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211225160754.png itemprop=contentUrl></a>
-</figure>
-</div>
-<p>有了最优的匹配之后，便可以计算损失函数，主要包括两个部分，一个是类别预测的 negative log-likehood，另一个是 bounding box 的回归损失：</p>
-<div class=box>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211225160754.png itemprop=contentUrl></a>
+</figure></div><p>有了最优的匹配之后，便可以计算损失函数，主要包括两个部分，一个是类别预测的 negative log-likehood，另一个是 bounding box 的回归损失：</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211225160818.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211225160818.png itemprop=contentUrl></a>
-</figure>
-</div>
-<p>这里的回归损失函数包含两个损失，即 GIoU 损失和 L1 的损失：</p>
-<div class=box>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211225160818.png itemprop=contentUrl></a>
+</figure></div><p>这里的回归损失函数包含两个损失，即 GIoU 损失和 L1 的损失：</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211225160841.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211225160841.png itemprop=contentUrl></a>
-</figure>
-</div>
-<h3 id=detr-模型结构>DETR 模型结构</h3>
-<p>前面已经讲解完训练损失的关键部分：bipartite matching loss，接下来开始更加细致地分析 DETR 的整体结构，看看 transformer 在目标检测中可以怎样设计。模型的详细结构图如下所示：
-<img src=/ox-hugo/pngpaste_clipboard_file_20211216133428.png alt></p>
-<p>总共包括四个部分：CNN骨干网络 backbone、encoder、decoder，prediction heads，接下来分别介绍这四个部分。</p>
-<p>1） CNN 骨干网络 backbone
-DETR 利用 CNN 骨干网络从原始像素值中提取特征，假设一张图的大小为 \(3*H_0*W_0\) , 通过 backbone 之后，以 resnet50 为例，将会得到一个 feature map，大小为 \(C*H*W\) （ \(H=H_0/32\) , \(W=w_0/32\) , \(C=2048\)）。</p>
-<p>2） encoder
-encoder 首先使用一个 \(1*1\) 的卷积来减少 feature map 的维度，把 C 变成一个更小的维度 d, 得到一个新的 feature map \(d*H*W\) 。由于 encoder 希望得到的输入是一个序列，所以 DETR 把空间维度拉直变成了一维，得到一个 \(d*HW\) 的feature map，其实就是原始 feature map 中的一个点代表 nlp 里面的一个词。</p>
-<p>DETR transformer 的 encoder 与标准的 transformer 基本一致，如下图所示：</p>
-<div class=box>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211225160841.png itemprop=contentUrl></a>
+</figure></div><h3 id=detr-模型结构>DETR 模型结构</h3><p>前面已经讲解完训练损失的关键部分：bipartite matching loss，接下来开始更加细致地分析 DETR 的整体结构，看看 transformer 在目标检测中可以怎样设计。模型的详细结构图如下所示：
+<img src=/ox-hugo/pngpaste_clipboard_file_20211216133428.png alt></p><p>总共包括四个部分：CNN骨干网络 backbone、encoder、decoder，prediction heads，接下来分别介绍这四个部分。</p><p>1） CNN 骨干网络 backbone
+DETR 利用 CNN 骨干网络从原始像素值中提取特征，假设一张图的大小为 \(3*H_0*W_0\) , 通过 backbone 之后，以 resnet50 为例，将会得到一个 feature map，大小为 \(C*H*W\) （ \(H=H_0/32\) , \(W=w_0/32\) , \(C=2048\)）。</p><p>2） encoder
+encoder 首先使用一个 \(1*1\) 的卷积来减少 feature map 的维度，把 C 变成一个更小的维度 d, 得到一个新的 feature map \(d*H*W\) 。由于 encoder 希望得到的输入是一个序列，所以 DETR 把空间维度拉直变成了一维，得到一个 \(d*HW\) 的feature map，其实就是原始 feature map 中的一个点代表 nlp 里面的一个词。</p><p>DETR transformer 的 encoder 与标准的 transformer 基本一致，如下图所示：</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211216135014.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211216135014.png itemprop=contentUrl></a>
-</figure>
-</div>
-<p>encoder 部分主要包含一个 multi-head self-attention 模块以及一个 FFN 网络。虽然整体结构和标准的 transformer 基本一样，但是还是有一些不同的地方。</p>
-<p>a) 考虑 2d 空间的 Spatial positional encoding</p>
-<p>传统的 transformer 的 position encoding 都是 1D 的，但是对于视觉任务，很明显具有 2D 的关系，因此作者设计 Spatial positional encoding 考虑了两个 xy 两个方向，具体的编码方式采用的是 sincos 的形式。因为 position encoding 最后是要和feature相加的，所以它的维度也是 d 维，在实现上就是先对 x 方向进行编码得到维度维 d/2 的向量，再对 y 方向进行编码同样得到维度为 d/2 的向量，最终将二者 concat 到一起。</p>
-<p>b) 仅 K 和 Q 上添加了 Spatial positional encoding</p>
-<p>这里给出标准 transformer 的结构图示意图：
-<img src=/ox-hugo/pngpaste_clipboard_file_20211216140242.png alt></p>
-<p>可以看到 positional encoding 是加在 Q，K V 上的，而 DETR 这里仅加在了 Q 和 K 上，作者也没解释为什么这样加,大概因为目标检测任务对位置更加敏感，所以在整个过程中都加入位置信息。</p>
-<p>3）decoder</p>
-<p>DETR transformer 的 decoder 和标准的 transformer 的 decoder 有很多的不同之处。</p>
-<p>a) 并行解码所有元素</p>
-<p>由于预测的目标之间是无序的，DETR可以一次性将 N 个目标框预测出来，因此在解码时不需要向标准的 transformer 一样进行顺序解码。回想一下标准 transformer 解码器的工作流程，首先输入一个起始的 token BOS_WORD, 然后解码器预测第一个元素，将开始 BOS_WORD 和第一个元素送入 decoder，然后得到第二个元素，依次进行下去知道得到结束的 token 才终止。然而在 DETR 中，只需要初始化一个全 0 的token，然后加上对应的 position encoding（文章叫做 object query，后面将详细阐述）一起送入到 decoder 中，直接得到 N 个目标框的预测结果。</p>
-<p>b) Object Query</p>
-<p>DETR 中在 decoder 部分提出了一个 Object Query 的概念，可以简单理解为标准的 transformer 中的 position encoding，形式上差不多。但是在 DETR 中主要是为了得到目标物体与全局图像之间的关系，简单来说就是一些关于目标在图像中的一些关系，比如大小、位置、类别等信息，每一个 query 相当于融合和了整个数据集中所有类别在某个位置具有多大的目标。Object query 首先计算一个 self-attention，然后和 encoder 得到的 k，v 计算新的 feature。值得注意的是，这里计算 self-attention 的时候，object query 和 encoder 的 positional encoding 一样，也只加在了 k，q 中，没有加到 v 上。</p>
-<p>c) decoder 中计算 cross-attention 时都加上了 positional encoding</p>
-<p>仔细对比标准的 transformer 的 encoder 和 DETR 的 encoder 可以发现，标准的 transformer 在 decoder 中，接收的 encoder 输出没有添加 positional encoding，而在 DETR 中，作者认为 positional encoding 在 decoder 中也非常重要，主要还是因为目标检测是一个和位置强相关的任务。</p>
-<p>4）Prediction Heads</p>
-<p>Prediction Heads 主要是得到分类结果和目标框的坐标，就是一些全连接层，比较简单。除了最后一个 decoder 计算损失函数外，作者添加了一些辅助的损失函数，就是将每一个 decoder 的输出都用同样的 prediction Heads 来计算损失，这样可以进一步提升模型的性能。</p>
-<h3 id=实验结果>实验结果</h3>
-<p>在实验部分，backbone 主要是 resnet50/101，以及为了提升特征的分辨率，使用了空洞卷积，最后得到的 feature 少降低一倍分辨率，当然分辨率的提高也引来了更大的计算消耗。</p>
-<p>主要的实验结果如下表所示：</p>
-<div class=box>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211216135014.png itemprop=contentUrl></a>
+</figure></div><p>encoder 部分主要包含一个 multi-head self-attention 模块以及一个 FFN 网络。虽然整体结构和标准的 transformer 基本一样，但是还是有一些不同的地方。</p><p>a) 考虑 2d 空间的 Spatial positional encoding</p><p>传统的 transformer 的 position encoding 都是 1D 的，但是对于视觉任务，很明显具有 2D 的关系，因此作者设计 Spatial positional encoding 考虑了两个 xy 两个方向，具体的编码方式采用的是 sincos 的形式。因为 position encoding 最后是要和feature相加的，所以它的维度也是 d 维，在实现上就是先对 x 方向进行编码得到维度维 d/2 的向量，再对 y 方向进行编码同样得到维度为 d/2 的向量，最终将二者 concat 到一起。</p><p>b) 仅 K 和 Q 上添加了 Spatial positional encoding</p><p>这里给出标准 transformer 的结构图示意图：
+<img src=/ox-hugo/pngpaste_clipboard_file_20211216140242.png alt></p><p>可以看到 positional encoding 是加在 Q，K V 上的，而 DETR 这里仅加在了 Q 和 K 上，作者也没解释为什么这样加,大概因为目标检测任务对位置更加敏感，所以在整个过程中都加入位置信息。</p><p>3）decoder</p><p>DETR transformer 的 decoder 和标准的 transformer 的 decoder 有很多的不同之处。</p><p>a) 并行解码所有元素</p><p>由于预测的目标之间是无序的，DETR可以一次性将 N 个目标框预测出来，因此在解码时不需要向标准的 transformer 一样进行顺序解码。回想一下标准 transformer 解码器的工作流程，首先输入一个起始的 token BOS_WORD, 然后解码器预测第一个元素，将开始 BOS_WORD 和第一个元素送入 decoder，然后得到第二个元素，依次进行下去知道得到结束的 token 才终止。然而在 DETR 中，只需要初始化一个全 0 的token，然后加上对应的 position encoding（文章叫做 object query，后面将详细阐述）一起送入到 decoder 中，直接得到 N 个目标框的预测结果。</p><p>b) Object Query</p><p>DETR 中在 decoder 部分提出了一个 Object Query 的概念，可以简单理解为标准的 transformer 中的 position encoding，形式上差不多。但是在 DETR 中主要是为了得到目标物体与全局图像之间的关系，简单来说就是一些关于目标在图像中的一些关系，比如大小、位置、类别等信息，每一个 query 相当于融合和了整个数据集中所有类别在某个位置具有多大的目标。Object query 首先计算一个 self-attention，然后和 encoder 得到的 k，v 计算新的 feature。值得注意的是，这里计算 self-attention 的时候，object query 和 encoder 的 positional encoding 一样，也只加在了 k，q 中，没有加到 v 上。</p><p>c) decoder 中计算 cross-attention 时都加上了 positional encoding</p><p>仔细对比标准的 transformer 的 encoder 和 DETR 的 encoder 可以发现，标准的 transformer 在 decoder 中，接收的 encoder 输出没有添加 positional encoding，而在 DETR 中，作者认为 positional encoding 在 decoder 中也非常重要，主要还是因为目标检测是一个和位置强相关的任务。</p><p>4）Prediction Heads</p><p>Prediction Heads 主要是得到分类结果和目标框的坐标，就是一些全连接层，比较简单。除了最后一个 decoder 计算损失函数外，作者添加了一些辅助的损失函数，就是将每一个 decoder 的输出都用同样的 prediction Heads 来计算损失，这样可以进一步提升模型的性能。</p><h3 id=实验结果>实验结果</h3><p>在实验部分，backbone 主要是 resnet50/101，以及为了提升特征的分辨率，使用了空洞卷积，最后得到的 feature 少降低一倍分辨率，当然分辨率的提高也引来了更大的计算消耗。</p><p>主要的实验结果如下表所示：</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211216150402.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211216150402.png itemprop=contentUrl></a>
-</figure>
-</div>
-<p>图中的模型都是通过 Detectron2 来实现的，普通的 Faster RCNN 训练 3x schedule ，然后 “+” 代表 9x schedule （109 epoches），可以看到 DETR 模型的效果基本可以达到甚至超越 Faster RCNN 的结果。但是从表里也可以发现 DETR 的一些劣势，特别是在小目标上的检测精度上。</p>
-<p>作者对模型做了很多消融实验并且提供了很多的图示进行解释。</p>
-<ol>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211216150402.png itemprop=contentUrl></a>
+</figure></div><p>图中的模型都是通过 Detectron2 来实现的，普通的 Faster RCNN 训练 3x schedule ，然后 “+” 代表 9x schedule （109 epoches），可以看到 DETR 模型的效果基本可以达到甚至超越 Faster RCNN 的结果。但是从表里也可以发现 DETR 的一些劣势，特别是在小目标上的检测精度上。</p><p>作者对模型做了很多消融实验并且提供了很多的图示进行解释。</p><ol>
 <li>
-<p>encoder 的层数</p>
-<div class=box>
+<p>encoder 的层数</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211216151241.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211216151241.png itemprop=contentUrl></a>
-</figure>
-</div>
-<p>结论是基本上 encoder 的层数越多，效果是越好的</p>
-</li>
-<li>
-<p>encoder self-attention 可视化</p>
-<div class=box>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211216151241.png itemprop=contentUrl></a>
+</figure></div><p>结论是基本上 encoder 的层数越多，效果是越好的</p></li><li>
+<p>encoder self-attention 可视化</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211216152108.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211216152108.png itemprop=contentUrl></a>
-</figure>
-</div>
-<p>作者对最后一层 encoder 出来的 attention maps 进行了可视化，选取了几个目标中的参考点，然后可视化对于参考点的 attention，可以看出这些参考点的 attention 已经能够将目标区分出来，这样可以简化后面 decoder 的精确定位。</p>
-</li>
-<li>
-<p>decoder 的层数</p>
-<div class=box>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211216152108.png itemprop=contentUrl></a>
+</figure></div><p>作者对最后一层 encoder 出来的 attention maps 进行了可视化，选取了几个目标中的参考点，然后可视化对于参考点的 attention，可以看出这些参考点的 attention 已经能够将目标区分出来，这样可以简化后面 decoder 的精确定位。</p></li><li>
+<p>decoder 的层数</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211216152524.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211216152524.png itemprop=contentUrl></a>
-</figure>
-</div>
-<p>DETR 的每一层 decoder layer 都会输出对应的预测结果，作者对每一层输出的预测结果进行评估，可以发现当然层数是越多越好，而且 DETR 不需要进行 NMS，说明 DETR 不会产生冗余的预测。</p>
-</li>
-<li>
-<p>decoder attention 可视化</p>
-<div class=box>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211216152524.png itemprop=contentUrl></a>
+</figure></div><p>DETR 的每一层 decoder layer 都会输出对应的预测结果，作者对每一层输出的预测结果进行评估，可以发现当然层数是越多越好，而且 DETR 不需要进行 NMS，说明 DETR 不会产生冗余的预测。</p></li><li>
+<p>decoder attention 可视化</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211216152836.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211216152836.png itemprop=contentUrl></a>
-</figure>
-</div>
-<p>同样地，作者对 decoder 的 attention 也进行了可视化，每一个能够检测到目标的 query，对应的 attention 如上图所示，可以看出 decoder 的 attention 激活值比较大的地方确实主要在目标的边界。</p>
-</li>
-<li>
-<p>positional encoding 的重要性</p>
-<div class=box>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211216152836.png itemprop=contentUrl></a>
+</figure></div><p>同样地，作者对 decoder 的 attention 也进行了可视化，每一个能够检测到目标的 query，对应的 attention 如上图所示，可以看出 decoder 的 attention 激活值比较大的地方确实主要在目标的边界。</p></li><li>
+<p>positional encoding 的重要性</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211216154640.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211216154640.png itemprop=contentUrl></a>
-</figure>
-</div>
-<p>DETR 中有三个地方需要 positional encoding，一个是 encoder 的输入，一个是 decoder 的 cross attention 的部分，最后一个是 decoder 的 self-attention 部分。表中 at input 表示只在 encoder 或者 decoder 的输入的地方添加 positional encoding，这是标准的 transformer 中使用的策略。at attn 就是 DETR 的方式，在 encoder 或 decoder 每一层都添加了对应的 position encoding。由于 object query 是必须的，所以作者在这个实验没有去除 decoder 的 object query。从表中可以看到，如果去除 encoder 和 decoder 中的 positional encoding 后，模型的检测精度将会极速下降。</p>
-</li>
-<li>
-<p>decoder output slot 分析</p>
-<p>这里的 decoder output slot 其实就是 object query，作者通过可视化 COCO 2017 val 数据集上所有图片的 box 预测结果，从 100 个预测中选取了 20 个 DETR decoder 的结果。其中不同的颜色代表点代表 box 的不同大小，绿色为小目标，红色为大目标。点的位置代表了目标的中心位置。可以看出，不同的 object query 学习到了在某个位置，特定大小目标的 patten。作者提到 COCO 数据集中就存在很多和图像大小差不多的 box，所以大多数 slots 都会预测中心区域然后很大的目标框。</p>
-<div class=box>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211216154640.png itemprop=contentUrl></a>
+</figure></div><p>DETR 中有三个地方需要 positional encoding，一个是 encoder 的输入，一个是 decoder 的 cross attention 的部分，最后一个是 decoder 的 self-attention 部分。表中 at input 表示只在 encoder 或者 decoder 的输入的地方添加 positional encoding，这是标准的 transformer 中使用的策略。at attn 就是 DETR 的方式，在 encoder 或 decoder 每一层都添加了对应的 position encoding。由于 object query 是必须的，所以作者在这个实验没有去除 decoder 的 object query。从表中可以看到，如果去除 encoder 和 decoder 中的 positional encoding 后，模型的检测精度将会极速下降。</p></li><li>
+<p>decoder output slot 分析</p><p>这里的 decoder output slot 其实就是 object query，作者通过可视化 COCO 2017 val 数据集上所有图片的 box 预测结果，从 100 个预测中选取了 20 个 DETR decoder 的结果。其中不同的颜色代表点代表 box 的不同大小，绿色为小目标，红色为大目标。点的位置代表了目标的中心位置。可以看出，不同的 object query 学习到了在某个位置，特定大小目标的 patten。作者提到 COCO 数据集中就存在很多和图像大小差不多的 box，所以大多数 slots 都会预测中心区域然后很大的目标框。</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211216160345.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211216160345.png itemprop=contentUrl></a>
-</figure>
-</div>
-</li>
-<li>
-<p>泛化到没有见过的目标数量</p>
-<p>COCO 数据集中很多目标都不会出现太多次，特别是一个类别的目标不会在图像中多次出现，所以一个很自然的疑问就是 DETR 能够泛化到未知目标数量的图像上吗？因此作者做了一个实验，将 24 个长颈鹿拼在一起，然后送入 DETR 模型检测，可以看到模型依然能够检测出来，这说明 每个 object query 不会有很强的关于类别的偏见。</p>
-<div class=box>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211216160345.png itemprop=contentUrl></a>
+</figure></div></li><li>
+<p>泛化到没有见过的目标数量</p><p>COCO 数据集中很多目标都不会出现太多次，特别是一个类别的目标不会在图像中多次出现，所以一个很自然的疑问就是 DETR 能够泛化到未知目标数量的图像上吗？因此作者做了一个实验，将 24 个长颈鹿拼在一起，然后送入 DETR 模型检测，可以看到模型依然能够检测出来，这说明 每个 object query 不会有很强的关于类别的偏见。</p><div class=box>
 <figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
 <div class=img>
 <img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211216160743.png>
-</div>
-<a href=/ox-hugo/pngpaste_clipboard_file_20211216160743.png itemprop=contentUrl></a>
-</figure>
-</div>
-</li>
-</ol>
-<h2 id=个人评价>个人评价</h2>
-<p>毫无疑问 DETR 是一个开创性的工作，直接把 transformer 引入到目标检测中，把目标检测任务当做一个点集预测的任务，实现目标检测真正的 end-to-end。但是也有一些问题:</p>
-<ol>
-<li>不够纯粹。在刚出来的时候，很多人认为 DETR 是一个残次品，是 CNN 和 transformer 的组合。所以没有引起很多的关注，知道 ViT 的出现，vision transform 才开始急速发展。</li>
-<li>收敛速度慢，资源消耗多。DETR 训练需要的资源消耗也让很多人望而却步，作者在 COCO 数据集上训练 DETR 需要至少 300 epoch，使用 16 张 V100 需要训练三天才能收敛。</li>
-<li>在小目标上表现欠佳。</li>
-</ol>
-<p>后续基于 DETR 的工作主要集中解决后两个问题，使得模型收敛更快，性能更好。</p>
-</div>
-<div class=post-copyright>
+</div><a href=/ox-hugo/pngpaste_clipboard_file_20211216160743.png itemprop=contentUrl></a>
+</figure></div></li></ol><h2 id=个人评价>个人评价</h2><p>毫无疑问 DETR 是一个开创性的工作，直接把 transformer 引入到目标检测中，把目标检测任务当做一个点集预测的任务，实现目标检测真正的 end-to-end。但是也有一些问题:</p><ol>
+<li>不够纯粹。在刚出来的时候，很多人认为 DETR 是一个残次品，是 CNN 和 transformer 的组合。所以没有引起很多的关注，知道 ViT 的出现，vision transform 才开始急速发展。</li><li>收敛速度慢，资源消耗多。DETR 训练需要的资源消耗也让很多人望而却步，作者在 COCO 数据集上训练 DETR 需要至少 300 epoch，使用 16 张 V100 需要训练三天才能收敛。</li><li>在小目标上表现欠佳。</li></ol><p>后续基于 DETR 的工作主要集中解决后两个问题，使得模型收敛更快，性能更好。</p></div><div class=post-copyright>
 <p class=copyright-item>
 <span class=item-title>文章作者</span>
 <span class=item-content>kinredon</span>
-</p>
-<p class=copyright-item>
+</p><p class=copyright-item>
 <span class=item-title>上次更新</span>
 <span class=item-content>
 2021-12-25
 </span>
-</p>
-<p class=copyright-item>
+</p><p class=copyright-item>
 <span class=item-title>许可协议</span>
 <span class=item-content><a rel="license noopener" href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank>CC BY-NC-ND 4.0</a></span>
-</p>
-</div>
-<footer class=post-footer>
+</p></div><footer class=post-footer>
 <div class=post-tags>
 <a href=https://kinredon.github.io/tags/object-detection/>Object Detection</a>
 <a href=https://kinredon.github.io/tags/vision-transformer/>Vision Transformer</a>
 <a href=https://kinredon.github.io/tags/detr/>DETR</a>
-</div>
-<nav class=post-nav>
+</div><nav class=post-nav>
 <a class=prev href=/post/2021_conclusion/>
 <i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417l277.93508-310.326815c11.338233-12.190647 11.035334-32.285311-.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"/></svg>
 </i>
@@ -395,16 +226,9 @@ encoder 首先使用一个 \(1*1\) 的卷积来减少 feature map 的维度，�
 <i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697c-11.777231-11.500939-30.216186-10.304694-41.178865 2.712784z"/></svg>
 </i>
 </a>
-</nav>
-</footer>
-</article>
-<div class="post bg-white">
+</nav></footer></article><div class="post bg-white">
 <script src=https://utteranc.es/client.js repo=kinredon/comments-blog issue-term=pathname theme=github-light crossorigin=anonymous async></script>
-</div>
-</div>
-</div>
-</main>
-<footer id=footer class=footer>
+</div></div></div></main><footer id=footer class=footer>
 <div class=icon-links>
 <a href=mailto:kinredon@163.com rel="me noopener" class=iconfont title=email><svg class="icon" viewBox="0 0 1451 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36"><path d="M664.781909 681.472759.0 97.881301C0 3.997201 71.046997.0 71.046997.0H474.477909 961.649408h399.992405s71.046998 3.997201 71.046998 97.881301L771.345323 681.472759S764.482731 685.154773 753.594283 688.65053V688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858V688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759zm53.281707 130.131124C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633.0 212.052267.0 212.052267V942.809523S0 1024 83.726336 1024H682.532949 753.579947h595.368192C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523V212.052267S893.138176 701.759633 817.019477 767.734955c-39.771477 34.470494-74.671786 43.295855-98.955861 43.868928z"/></svg>
 </a>
@@ -412,8 +236,7 @@ encoder 首先使用一个 \(1*1\) 的卷积来减少 feature map 的维度，�
 </a>
 <a href=https://kinredon.github.io/index.xml rel="noopener alternate" type=application/rss+xml class=iconfont title=rss target=_blank><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30"><path d="M819.157333 1024C819.157333 574.592 449.408 204.8.0 204.8V0c561.706667.0 1024 462.293333 1024 1024H819.157333zM140.416 743.04a140.8 140.8.0 01140.501333 140.586667A140.928 140.928.0 01140.074667 1024C62.72 1024 0 961.109333.0 883.626667S62.933333 743.082667 140.416 743.04zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667v-199.04c372.352.0 678.784 306.517333 678.784 678.826667z"/></svg>
 </a>
-</div>
-<div class=copyright>
+</div><div class=copyright>
 <span class=power-by>
 Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a>
 </span>
@@ -431,14 +254,10 @@ Theme - <a class=theme-link href=https://github.com/xianmin/hugo-theme-jane>Jane
 </span><span class=author>
 kinredon
 </span></span>
-</div>
-</footer>
-<div class=back-to-top id=back-to-top>
+</div></footer><div class=back-to-top id=back-to-top>
 <i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="35"><path d="M510.866688 227.694839 95.449397 629.218702h235.761562L329.15309 958.01517h362.40389L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777h894.052392v131.813095H63.840492V63.962777zm0 0"/></svg>
 </i>
-</div>
-</div>
-<script type=text/javascript src=/lib/jquery/jquery-3.2.1.min.js></script>
+</div></div><script type=text/javascript src=/lib/jquery/jquery-3.2.1.min.js></script>
 <script type=text/javascript src=/lib/slideout/slideout-1.0.1.min.js></script>
 <script type=text/javascript src=/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css integrity=sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG crossorigin=anonymous>
@@ -448,5 +267,4 @@ kinredon
 <script type=text/javascript src=/js/load-photoswipe.js></script>
 <script type=text/javascript src=/lib/photoswipe/photoswipe.min.js></script>
 <script type=text/javascript src=/lib/photoswipe/photoswipe-ui-default.min.js></script>
-</body>
-</html>
+</body></html>
