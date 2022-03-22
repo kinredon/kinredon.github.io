@@ -1,213 +1,53 @@
-<!doctype html><html lang=zh-cn itemscope itemtype=http://schema.org/WebPage>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<title>使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上 - kinredon's blog</title><meta name=renderer content="webkit">
-<meta name=viewport content="width=device-width,initial-scale=1,user-scalable=yes">
-<meta name=MobileOptimized content="width">
-<meta name=HandheldFriendly content="true">
-<meta name=applicable-device content="pc,mobile">
-<meta name=theme-color content="#f8f5ec">
-<meta name=msapplication-navbutton-color content="#f8f5ec">
-<meta name=apple-mobile-web-app-capable content="yes">
-<meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec">
-<meta name=mobile-web-app-capable content="yes">
-<meta name=author content="kinredon">
-<meta name=description content="前言 相信很多人都有搭建个人网站的需求，可能是想写自己的博文，传达一些思想给社区。也有可能你是一名科研工作者，需要搭建个人学术主页展示科研成果">
-<meta name=keywords content="blog,computer vision,deep learning">
-<meta name=generator content="Hugo 0.93.0">
-<link rel=canonical href=https://kinredon.github.io/post/how-to-publish-personal-website-on-github/>
-<link rel=icon href=/favicon.ico>
-<link rel=stylesheet href=/sass/jane.min.fa4b2b9f31b5c6d0b683db81157a9226e17b06e61911791ab547242a4a0556f2.css integrity="sha256-+ksrnzG1xtC2g9uBFXqSJuF7BuYZEXkatUckKkoFVvI=" media=screen crossorigin=anonymous>
-<meta property="og:title" content="使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上">
-<meta property="og:description" content="前言 相信很多人都有搭建个人网站的需求，可能是想写自己的博文，传达一些思想给社区。也有可能你是一名科研工作者，需要搭建个人学术主页展示科研成果">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://kinredon.github.io/post/how-to-publish-personal-website-on-github/"><meta property="article:section" content="post">
-<meta property="article:published_time" content="2021-10-04T00:00:00+00:00">
-<meta property="article:modified_time" content="2021-10-05T15:43:51+08:00">
-<meta itemprop=name content="使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上">
-<meta itemprop=description content="前言 相信很多人都有搭建个人网站的需求，可能是想写自己的博文，传达一些思想给社区。也有可能你是一名科研工作者，需要搭建个人学术主页展示科研成果"><meta itemprop=datePublished content="2021-10-04T00:00:00+00:00">
-<meta itemprop=dateModified content="2021-10-05T15:43:51+08:00">
-<meta itemprop=wordCount content="1555">
-<meta itemprop=keywords content="Hugo,Blog,Website,"><meta name=twitter:card content="summary">
-<meta name=twitter:title content="使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上">
-<meta name=twitter:description content="前言 相信很多人都有搭建个人网站的需求，可能是想写自己的博文，传达一些思想给社区。也有可能你是一名科研工作者，需要搭建个人学术主页展示科研成果"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
-<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]-->
-</head><body>
-<div id=mobile-navbar class=mobile-navbar>
-<div class=mobile-header-logo>
-<a href=/ class=logo>kinredon</a>
-</div><div class=mobile-navbar-icon>
+<!doctype html><html lang=zh-cn itemscope itemtype=http://schema.org/WebPage><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上 - kinredon's blog</title><meta name=renderer content="webkit"><meta name=viewport content="width=device-width,initial-scale=1,user-scalable=yes"><meta name=MobileOptimized content="width"><meta name=HandheldFriendly content="true"><meta name=applicable-device content="pc,mobile"><meta name=theme-color content="#f8f5ec"><meta name=msapplication-navbutton-color content="#f8f5ec"><meta name=apple-mobile-web-app-capable content="yes"><meta name=apple-mobile-web-app-status-bar-style content="#f8f5ec"><meta name=mobile-web-app-capable content="yes"><meta name=author content="kinredon"><meta name=description content="前言 相信很多人都有搭建个人网站的需求，可能是想写自己的博文，传达一些思想给社区。也有可能你是一名科研工作者，需要搭建个人学术主页展示科研成果"><meta name=keywords content="blog,computer vision,deep learning"><meta name=generator content="Hugo 0.95.0"><link rel=canonical href=https://kinredon.github.io/post/how-to-publish-personal-website-on-github/><link rel=icon href=/favicon.ico><link rel=stylesheet href=/sass/jane.min.fa4b2b9f31b5c6d0b683db81157a9226e17b06e61911791ab547242a4a0556f2.css integrity="sha256-+ksrnzG1xtC2g9uBFXqSJuF7BuYZEXkatUckKkoFVvI=" media=screen crossorigin=anonymous><meta property="og:title" content="使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上"><meta property="og:description" content="前言 相信很多人都有搭建个人网站的需求，可能是想写自己的博文，传达一些思想给社区。也有可能你是一名科研工作者，需要搭建个人学术主页展示科研成果"><meta property="og:type" content="article"><meta property="og:url" content="https://kinredon.github.io/post/how-to-publish-personal-website-on-github/"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-10-04T00:00:00+00:00"><meta property="article:modified_time" content="2021-10-05T15:43:51+08:00"><meta itemprop=name content="使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上"><meta itemprop=description content="前言 相信很多人都有搭建个人网站的需求，可能是想写自己的博文，传达一些思想给社区。也有可能你是一名科研工作者，需要搭建个人学术主页展示科研成果"><meta itemprop=datePublished content="2021-10-04T00:00:00+00:00"><meta itemprop=dateModified content="2021-10-05T15:43:51+08:00"><meta itemprop=wordCount content="1555"><meta itemprop=keywords content="Hugo,Blog,Website,"><meta name=twitter:card content="summary"><meta name=twitter:title content="使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上"><meta name=twitter:description content="前言 相信很多人都有搭建个人网站的需求，可能是想写自己的博文，传达一些思想给社区。也有可能你是一名科研工作者，需要搭建个人学术主页展示科研成果"><!--[if lte IE 9]><script src=https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js></script><![endif]--><!--[if lt IE 9]><script src=https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js></script>
+<script src=https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js></script><![endif]--></head><body><div id=mobile-navbar class=mobile-navbar><div class=mobile-header-logo><a href=/ class=logo>kinredon</a></div><div class=mobile-navbar-icon><span></span>
 <span></span>
-<span></span>
-<span></span>
-</div></div><nav id=mobile-menu class="mobile-menu slideout-menu">
-<ul class=mobile-menu-list>
-<li class=mobile-menu-item>
-<a class=menu-item-link href=https://kinredon.github.io/>Home</a>
-</li><li class=mobile-menu-item>
-<a class=menu-item-link href=https://kinredon.github.io/post/>Archives</a>
-</li><li class=mobile-menu-item>
-<a class=menu-item-link href=https://kinredon.github.io/tags/>Tags</a>
-</li><li class=mobile-menu-item>
-<a class=menu-item-link href=https://kinredon.github.io/categories/>Categories</a>
-</li><li class=mobile-menu-item>
-<a class=menu-item-link href=https://kinredon.github.io/about/>About</a>
-</li></ul></nav><link rel=stylesheet href=/lib/photoswipe/photoswipe.min.css>
-<link rel=stylesheet href=/lib/photoswipe/default-skin/default-skin.min.css>
-<div class=pswp tabindex=-1 role=dialog aria-hidden=true>
-<div class=pswp__bg></div><div class=pswp__scroll-wrap>
-<div class=pswp__container>
-<div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden">
-<div class=pswp__top-bar>
-<div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<span></span></div></div><nav id=mobile-menu class="mobile-menu slideout-menu"><ul class=mobile-menu-list><li class=mobile-menu-item><a class=menu-item-link href=https://kinredon.github.io/>Home</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://kinredon.github.io/post/>Archives</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://kinredon.github.io/tags/>Tags</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://kinredon.github.io/categories/>Categories</a></li><li class=mobile-menu-item><a class=menu-item-link href=https://kinredon.github.io/about/>About</a></li></ul></nav><link rel=stylesheet href=/lib/photoswipe/photoswipe.min.css><link rel=stylesheet href=/lib/photoswipe/default-skin/default-skin.min.css><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
 <button class="pswp__button pswp__button--share" title=Share></button>
 <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-<div class=pswp__preloader>
-<div class=pswp__preloader__icn>
-<div class=pswp__preloader__cut>
-<div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-<div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-</button>
-<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-</button>
-<div class=pswp__caption>
-<div class=pswp__caption__center></div></div></div></div></div><header id=header class="header container">
-<div class=logo-wrapper>
-<a href=/ class=logo>
-kinredon
-</a>
-</div><nav class=site-navbar>
-<ul id=menu class=menu>
-<li class=menu-item>
-<a class=menu-item-link href=https://kinredon.github.io/>Home</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=https://kinredon.github.io/post/>Archives</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=https://kinredon.github.io/tags/>Tags</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=https://kinredon.github.io/categories/>Categories</a>
-</li><li class=menu-item>
-<a class=menu-item-link href=https://kinredon.github.io/about/>About</a>
-</li></ul></nav></header><div id=mobile-panel>
-<main id=main class="main bg-llight">
-<div class=content-wrapper>
-<div id=content class="content container">
-<article class="post bg-white">
-<header class=post-header>
-<h1 class=post-title>使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上</h1><div class=post-meta>
-<time datetime=2021-10-04 class=post-time>
-2021-10-04
-</time>
-<div class=post-category>
-<a href=https://kinredon.github.io/categories/hugo/> Hugo </a>
-</div><span class=more-meta> 约 1555 字 </span>
-<span class=more-meta> 预计阅读 4 分钟 </span>
-</div></header><div class=post-toc id=post-toc>
-<h2 class=post-toc-title>文章目录</h2><div class=post-toc-content>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#前言>前言</a></li><li><a href=#hugo-的安装和使用>Hugo 的安装和使用</a>
-<ul>
-<li><a href=#安装-hugo>安装 Hugo</a></li><li><a href=#创建个人网站>创建个人网站</a></li><li><a href=#使用-hugo-主题>使用 Hugo 主题</a></li><li><a href=#个人配置和网站生成>个人配置和网站生成</a></li></ul></li><li><a href=#github-pages>GitHub Pages</a>
-<ul>
-<li><a href=#使用-github-action-自动发布文章>使用 GitHub Action 自动发布文章</a></li></ul></li></ul></nav></div></div><div class=post-content>
-<h2 id=前言>前言</h2><p>相信很多人都有搭建个人网站的需求，可能是想写自己的博文，传达一些思想给社区。也有可能你是一名科研工作者，需要搭建个人学术主页展示科研成果。我也或多或少出于以上原因，选择搭建了个人网站，搭建过程中出现了许多问题，因此记录和分享，避免下次踩坑。Anyway，本文记录使用搭建个人博客的全过程，包括网站工具 <a href=https://gohugo.io/>Hugo</a> 的介绍和使用设置，以及如何将个人网站发布在免费托管平台，也就是 GitHub Pages 上。</p><p>我选择 Hugo 的原因主要有三点：</p><ul>
-<li>简单易用；</li><li><a href=https://gohugo.io/>Hugo</a> 能够快速地构建个人网站；</li><li>拥有丰富的主题，可供挑选 <a href=https://jamstackthemes.dev/ssg/hugo/>Hugo Themes</a>；</li></ul><p>选择 GitHub Pages 的原因就更简单了，免费又好用。</p><h2 id=hugo-的安装和使用>Hugo 的安装和使用</h2><p>Hugo 宣传号称是世界上最快构建网站的框架，也是最流行的静态网站生成工具之一。</p><h3 id=安装-hugo>安装 Hugo</h3><p>由于我的操作系统是 MacOs 因此安装起来特别简单：</p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>brew install hugo
-</span></span></code></pre></td></tr></table></div></div><p>其他平台可参考 <a href=https://gohugo.io/getting-started/installing>Hugo Install</a>。</p><h3 id=创建个人网站>创建个人网站</h3><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>hugo new site quickstart
-</span></span></code></pre></td></tr></table></div></div><h3 id=使用-hugo-主题>使用 Hugo 主题</h3><p>我使用的是 <a href=https://github.com/xianmin/hugo-theme-jane>jane</a>, 将主题 <code>clone</code> 到 <code>theme</code> 目录下：</p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><header id=header class="header container"><div class=logo-wrapper><a href=/ class=logo>kinredon</a></div><nav class=site-navbar><ul id=menu class=menu><li class=menu-item><a class=menu-item-link href=https://kinredon.github.io/>Home</a></li><li class=menu-item><a class=menu-item-link href=https://kinredon.github.io/post/>Archives</a></li><li class=menu-item><a class=menu-item-link href=https://kinredon.github.io/tags/>Tags</a></li><li class=menu-item><a class=menu-item-link href=https://kinredon.github.io/categories/>Categories</a></li><li class=menu-item><a class=menu-item-link href=https://kinredon.github.io/about/>About</a></li></ul></nav></header><div id=mobile-panel><main id=main class="main bg-llight"><div class=content-wrapper><div id=content class="content container"><article class="post bg-white"><header class=post-header><h1 class=post-title>使用 Hugo 搭建个人网站（博客、个人主页）并发布到 Github 上</h1><div class=post-meta><time datetime=2021-10-04 class=post-time>2021-10-04</time><div class=post-category><a href=https://kinredon.github.io/categories/hugo/>Hugo</a></div><span class=more-meta>约 1555 字</span>
+<span class=more-meta>预计阅读 4 分钟</span></div></header><div class=post-toc id=post-toc><h2 class=post-toc-title>文章目录</h2><div class=post-toc-content><nav id=TableOfContents><ul><li><a href=#前言>前言</a></li><li><a href=#hugo-的安装和使用>Hugo 的安装和使用</a><ul><li><a href=#安装-hugo>安装 Hugo</a></li><li><a href=#创建个人网站>创建个人网站</a></li><li><a href=#使用-hugo-主题>使用 Hugo 主题</a></li><li><a href=#个人配置和网站生成>个人配置和网站生成</a></li></ul></li><li><a href=#github-pages>GitHub Pages</a><ul><li><a href=#使用-github-action-自动发布文章>使用 GitHub Action 自动发布文章</a></li></ul></li></ul></nav></div></div><div class=post-content><h2 id=前言>前言</h2><p>相信很多人都有搭建个人网站的需求，可能是想写自己的博文，传达一些思想给社区。也有可能你是一名科研工作者，需要搭建个人学术主页展示科研成果。我也或多或少出于以上原因，选择搭建了个人网站，搭建过程中出现了许多问题，因此记录和分享，避免下次踩坑。Anyway，本文记录使用搭建个人博客的全过程，包括网站工具 <a href=https://gohugo.io/>Hugo</a> 的介绍和使用设置，以及如何将个人网站发布在免费托管平台，也就是 GitHub Pages 上。</p><p>我选择 Hugo 的原因主要有三点：</p><ul><li>简单易用；</li><li><a href=https://gohugo.io/>Hugo</a> 能够快速地构建个人网站；</li><li>拥有丰富的主题，可供挑选 <a href=https://jamstackthemes.dev/ssg/hugo/>Hugo Themes</a>；</li></ul><p>选择 GitHub Pages 的原因就更简单了，免费又好用。</p><h2 id=hugo-的安装和使用>Hugo 的安装和使用</h2><p>Hugo 宣传号称是世界上最快构建网站的框架，也是最流行的静态网站生成工具之一。</p><h3 id=安装-hugo>安装 Hugo</h3><p>由于我的操作系统是 MacOs 因此安装起来特别简单：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>brew install hugo
+</span></span></code></pre></td></tr></table></div></div><p>其他平台可参考 <a href=https://gohugo.io/getting-started/installing>Hugo Install</a>。</p><h3 id=创建个人网站>创建个人网站</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>hugo new site quickstart
+</span></span></code></pre></td></tr></table></div></div><h3 id=使用-hugo-主题>使用 Hugo 主题</h3><p>我使用的是 <a href=https://github.com/xianmin/hugo-theme-jane>jane</a>, 将主题 <code>clone</code> 到 <code>theme</code> 目录下：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=nb>cd</span> quickstart
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=nb>cd</span> quickstart
 </span></span><span class=line><span class=cl>git clone https://github.com/xianmin/hugo-theme-jane.git --depth<span class=o>=</span><span class=m>1</span> themes/jane
-</span></span></code></pre></td></tr></table></div></div><p>使用示例文本和默认的站点设置：</p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>使用示例文本和默认的站点设置：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>cp -r themes/jane/exampleSite/content ./
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>cp -r themes/jane/exampleSite/content ./
 </span></span><span class=line><span class=cl>cp themes/jane/exampleSite/config.toml ./
-</span></span></code></pre></td></tr></table></div></div><p>启动 Hugo 服务器，在 <a href=http://localhost:1313/>http://localhost:1313/</a> 将会看到示例 jane 主题的示例网站：</p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>hugo server
-</span></span></code></pre></td></tr></table></div></div><h3 id=个人配置和网站生成>个人配置和网站生成</h3><p>配置文件在网站根目录 <code>quickstart</code> 下 <code>config.toml</code> , 根据自身需求进行修改。在 jane 主题下的 <code>exampleSite</code> 文件夹中的文件可作为参考。默认的文章将存储在 <code>./content/post</code> 中，每当写完文章，运行 <code>hugo</code> 命令，Hugo 将自动生成静态网站到 <code>public</code> 文件夹中，我们只需要将该文件夹的内容发布在网络上即可。</p><p>更多关于主题的配置可以参考 <a href=https://github.com/xianmin/hugo-theme-jane/blob/master/README-zh.md>jane README.md</a>。</p><h2 id=github-pages>GitHub Pages</h2><p>我个人经常使用 GitHub，也见到很多大佬利用 GitHub pages 挂载自己的个人网站，发现配置起来也很简单，因此选择使用 GitHub pages 来进行配置，关于 GitHub pages 可以查看<a href=https://pages.github.com/>官网</a>，主要包括四个步骤：</p><ol>
-<li>
-<p>创建一个与 <code>username</code> 同名的 <strong>空</strong> <code>username.github.io</code> 仓库，不包含任何内容，如 <code>readme.md=，比如我的用户名为 =kinredon</code>, 因此我创建了一个仓库，名为 <code>kinredon.github.io</code>;</p></li><li>
-<p>克隆仓库到本地</p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>git clone https://github.com/kinredon/kinredon.github.io
-</span></span></code></pre></td></tr></table></div></div></li><li>
-<p>添加个人网站内容到该仓库</p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>启动 Hugo 服务器，在 <a href=http://localhost:1313/>http://localhost:1313/</a> 将会看到示例 jane 主题的示例网站：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>hugo server
+</span></span></code></pre></td></tr></table></div></div><h3 id=个人配置和网站生成>个人配置和网站生成</h3><p>配置文件在网站根目录 <code>quickstart</code> 下 <code>config.toml</code> , 根据自身需求进行修改。在 jane 主题下的 <code>exampleSite</code> 文件夹中的文件可作为参考。默认的文章将存储在 <code>./content/post</code> 中，每当写完文章，运行 <code>hugo</code> 命令，Hugo 将自动生成静态网站到 <code>public</code> 文件夹中，我们只需要将该文件夹的内容发布在网络上即可。</p><p>更多关于主题的配置可以参考 <a href=https://github.com/xianmin/hugo-theme-jane/blob/master/README-zh.md>jane README.md</a>。</p><h2 id=github-pages>GitHub Pages</h2><p>我个人经常使用 GitHub，也见到很多大佬利用 GitHub pages 挂载自己的个人网站，发现配置起来也很简单，因此选择使用 GitHub pages 来进行配置，关于 GitHub pages 可以查看<a href=https://pages.github.com/>官网</a>，主要包括四个步骤：</p><ol><li><p>创建一个与 <code>username</code> 同名的 <strong>空</strong> <code>username.github.io</code> 仓库，不包含任何内容，如 <code>readme.md=，比如我的用户名为 =kinredon</code>, 因此我创建了一个仓库，名为 <code>kinredon.github.io</code>;</p></li><li><p>克隆仓库到本地</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>git clone https://github.com/kinredon/kinredon.github.io
+</span></span></code></pre></td></tr></table></div></div></li><li><p>添加个人网站内容到该仓库</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=c1># copy 生成的网站内容到仓库文件夹下</span>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=c1># copy 生成的网站内容到仓库文件夹下</span>
 </span></span><span class=line><span class=cl>cp -rf quickstart/public/* kinredon.github.io/
-</span></span></code></pre></td></tr></table></div></div></li><li>
-<p>将文件内容同步更新到 GitHub 服务器上</p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div></li><li><p>将文件内容同步更新到 GitHub 服务器上</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=nb>cd</span> kinredon.github.io
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=nb>cd</span> kinredon.github.io
 </span></span><span class=line><span class=cl>git add .
 </span></span><span class=line><span class=cl>git commit -m <span class=s2>&#34;init the website&#34;</span>
 </span></span><span class=line><span class=cl>git push
-</span></span></code></pre></td></tr></table></div></div><p>此时，通过进入 <a href=https://kinredon.github.io>https://kinredon.github.io</a> 即可访问自己的个人网站。</p></li></ol><p>上面的步骤略显麻烦，每次需要将生成在 <code>public</code> 文件夹下的目录拷贝到 <code>kinredon.github.io</code> 目录下，然后发布到远程服务器。根据 <a href=https://gohugo.io/hosting-and-deployment/hosting-on-github/>Host on GitHub</a>，发布到 GitHub Pages 有两种方式, 一种是直接使用仓库目录下的 <code>doc</code> 目录作为原本 <code>public</code> 目录，详情可以参考 <a href=https://patrolli.github.io/xssq/post/hugo%5F%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/>hugo 博客搭建</a>。我采用的方式是利用 GitHub Action 自动完成上述过程。</p><h3 id=使用-github-action-自动发布文章>使用 GitHub Action 自动发布文章</h3><p>这里主要参考 <a href=https://vinurs.me/posts/1a329bf3-fbb7-4006-9714-d3b072826376/>搭建个人blog</a>, 使用 <code>master</code> 分支发布文章，使用一个新的 <code>source</code> 分支进行写作，写作完成后上传 <code>source</code> ，GitHub Action 自动将 <code>source</code> 分支的 <code>publish</code> 文件夹拷贝到 <code>master</code> 分支，从而完成文章的发布。</p><p>主要步骤如下：</p><ol>
-<li>
-<p>在 GitHub 上的个人网站仓库 <code>kinredon.github.io</code> 新建 <code>source</code> 分支</p><link rel=stylesheet href=/css/hugo-easy-gallery.css>
-<div class=box>
-<figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject>
-<div class=img>
-<img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211004154805.png alt="Figure 1: 创建 source 分支，由于我已经创建过，所以这里以 source-1 为例">
-</div><a href=/ox-hugo/pngpaste_clipboard_file_20211004154805.png itemprop=contentUrl></a>
-<figcaption>
-<p>Figure 1: 创建 source 分支，由于我已经创建过，所以这里以 source-1 为例</p></figcaption></figure></div></li><li>
-<p>清除文件夹 <code>kinredon.github.io</code> 中的内容，并将个人网站 <code>quickstart</code> 中的所有内容 copy 到 <code>kinredon.github.io</code> ：</p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>此时，通过进入 <a href=https://kinredon.github.io>https://kinredon.github.io</a> 即可访问自己的个人网站。</p></li></ol><p>上面的步骤略显麻烦，每次需要将生成在 <code>public</code> 文件夹下的目录拷贝到 <code>kinredon.github.io</code> 目录下，然后发布到远程服务器。根据 <a href=https://gohugo.io/hosting-and-deployment/hosting-on-github/>Host on GitHub</a>，发布到 GitHub Pages 有两种方式, 一种是直接使用仓库目录下的 <code>doc</code> 目录作为原本 <code>public</code> 目录，详情可以参考 <a href=https://patrolli.github.io/xssq/post/hugo%5F%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/>hugo 博客搭建</a>。我采用的方式是利用 GitHub Action 自动完成上述过程。</p><h3 id=使用-github-action-自动发布文章>使用 GitHub Action 自动发布文章</h3><p>这里主要参考 <a href=https://vinurs.me/posts/1a329bf3-fbb7-4006-9714-d3b072826376/>搭建个人blog</a>, 使用 <code>master</code> 分支发布文章，使用一个新的 <code>source</code> 分支进行写作，写作完成后上传 <code>source</code> ，GitHub Action 自动将 <code>source</code> 分支的 <code>publish</code> 文件夹拷贝到 <code>master</code> 分支，从而完成文章的发布。</p><p>主要步骤如下：</p><ol><li><p>在 GitHub 上的个人网站仓库 <code>kinredon.github.io</code> 新建 <code>source</code> 分支</p><link rel=stylesheet href=/css/hugo-easy-gallery.css><div class=box><figure itemprop=associatedMedia itemscope itemtype=http://schema.org/ImageObject><div class=img><img itemprop=thumbnail src=/ox-hugo/pngpaste_clipboard_file_20211004154805.png alt="Figure 1: 创建 source 分支，由于我已经创建过，所以这里以 source-1 为例"></div><a href=/ox-hugo/pngpaste_clipboard_file_20211004154805.png itemprop=contentUrl></a><figcaption><p>Figure 1: 创建 source 分支，由于我已经创建过，所以这里以 source-1 为例</p></figcaption></figure></div></li><li><p>清除文件夹 <code>kinredon.github.io</code> 中的内容，并将个人网站 <code>quickstart</code> 中的所有内容 copy 到 <code>kinredon.github.io</code> ：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>git clone --branch<span class=o>=</span><span class=nb>source</span> https://github.com/kinredon/kinredon.github.io.git
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>git clone --branch<span class=o>=</span><span class=nb>source</span> https://github.com/kinredon/kinredon.github.io.git
 </span></span><span class=line><span class=cl>rm -rf kinredon.github.io/*
 </span></span><span class=line><span class=cl>cp -rf quickstart/* kinredon.github.io
-</span></span></code></pre></td></tr></table></div></div></li><li>
-<p>生成 <code>ACTIONS_DEPLOY_KEY</code></p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>ssh-keygen -t rsa -b <span class=m>4096</span> -C <span class=s2>&#34;</span><span class=k>$(</span>git config user.email<span class=k>)</span><span class=s2>&#34;</span> -f gh-pages -N <span class=s2>&#34;&#34;</span>
+</span></span></code></pre></td></tr></table></div></div></li><li><p>生成 <code>ACTIONS_DEPLOY_KEY</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>ssh-keygen -t rsa -b <span class=m>4096</span> -C <span class=s2>&#34;</span><span class=k>$(</span>git config user.email<span class=k>)</span><span class=s2>&#34;</span> -f gh-pages -N <span class=s2>&#34;&#34;</span>
 </span></span></code></pre></td></tr></table></div></div><p>将生成的私钥文件 <code>gh-pages</code> (注意不是公钥 <code>gh-pages.pub</code>) 中的内容复制填写到 GitHub 仓库设置中，即在 <code>kinredon.github.io</code> 项目主页中，找到 Repository Settings -> Secrets -> 添加这个私钥的内容并命名为 <code>ACTIONS_DEPLOY_KEY</code> 。
-然后在 <code>kinredon.github.io</code> 项目主页中，找到 Repository Settings -> Deploy Keys -> 添加这个公钥的内容，命名为 <code>ACTIONS_DEPLOY_KEY</code> ，并勾选 Allow write access。</p></li><li>
-<p>配置 workflow</p><p>创建 workflow 文件</p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+然后在 <code>kinredon.github.io</code> 项目主页中，找到 Repository Settings -> Deploy Keys -> 添加这个公钥的内容，命名为 <code>ACTIONS_DEPLOY_KEY</code> ，并勾选 Allow write access。</p></li><li><p>配置 workflow</p><p>创建 workflow 文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>mkdir -p .github/workflows/
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>mkdir -p .github/workflows/
 </span></span><span class=line><span class=cl>touch .github/workflows/main.yml
-</span></span></code></pre></td></tr></table></div></div><p>在 <code>main.yaml</code> 中撰写 workflow，内容如下：</p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span></span></code></pre></td></tr></table></div></div><p>在 <code>main.yaml</code> 中撰写 workflow，内容如下：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
 </span><span class=lnt> 3
 </span><span class=lnt> 4
@@ -242,8 +82,7 @@ kinredon
 </span><span class=lnt>33
 </span><span class=lnt>34
 </span><span class=lnt>35
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>name: github pages
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>name: github pages
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>on:
 </span></span><span class=line><span class=cl>  push:
@@ -278,92 +117,35 @@ kinredon
 </span></span><span class=line><span class=cl>        deploy_key: <span class=si>${</span><span class=p>{ secrets.ACTIONS_DEPLOY_KEY </span><span class=si>}</span><span class=o>}</span>
 </span></span><span class=line><span class=cl>        publish_dir: ./public
 </span></span><span class=line><span class=cl>        publish_branch: main
-</span></span></code></pre></td></tr></table></div></div><p>注意，如果你的仓库是 <code>master</code> 分支作为主分支，将 <code>publish_branch</code> 后面的 <code>main</code> 修改为 <code>master</code> ;</p></li><li>
-<p>将 source 分支发送到远程</p><p>发送脚本 <code>deploy.sh</code> :</p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></span></code></pre></td></tr></table></div></div><p>注意，如果你的仓库是 <code>master</code> 分支作为主分支，将 <code>publish_branch</code> 后面的 <code>main</code> 修改为 <code>master</code> ;</p></li><li><p>将 source 分支发送到远程</p><p>发送脚本 <code>deploy.sh</code> :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
 </span><span class=lnt>2
 </span><span class=lnt>3
 </span><span class=lnt>4
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=cp>#!/bin/bash
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl><span class=cp>#!/bin/bash
 </span></span></span><span class=line><span class=cl><span class=cp></span>git add .
 </span></span><span class=line><span class=cl>git commit -m <span class=s2>&#34;update article&#34;</span>
 </span></span><span class=line><span class=cl>git push
-</span></span></code></pre></td></tr></table></div></div><p>推送到远程分支：</p><div class=highlight><div class=chroma>
-<table class=lntable><tr><td class=lntd>
-<pre tabindex=0 class=chroma><code><span class=lnt>1
-</span></code></pre></td><td class=lntd>
-<pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>sh deploy.sh
-</span></span></code></pre></td></tr></table></div></div><p>推送成功后，可以在项目主页中的 action 里面查看自动部署是否成功，即 <a href=https://github.com/kinredon/kinredon.github.io/actions>https://github.com/kinredon/kinredon.github.io/actions</a>；</p></li></ol></div><div class=post-copyright>
-<p class=copyright-item>
-<span class=item-title>文章作者</span>
-<span class=item-content>kinredon</span>
-</p><p class=copyright-item>
-<span class=item-title>上次更新</span>
-<span class=item-content>
-2021-10-05
-</span>
-</p><p class=copyright-item>
-<span class=item-title>许可协议</span>
-<span class=item-content><a rel="license noopener" href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank>CC BY-NC-ND 4.0</a></span>
-</p></div><footer class=post-footer>
-<div class=post-tags>
-<a href=https://kinredon.github.io/tags/hugo/>Hugo</a>
+</span></span></code></pre></td></tr></table></div></div><p>推送到远程分支：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>sh deploy.sh
+</span></span></code></pre></td></tr></table></div></div><p>推送成功后，可以在项目主页中的 action 里面查看自动部署是否成功，即 <a href=https://github.com/kinredon/kinredon.github.io/actions>https://github.com/kinredon/kinredon.github.io/actions</a>；</p></li></ol></div><div class=post-copyright><p class=copyright-item><span class=item-title>文章作者</span>
+<span class=item-content>kinredon</span></p><p class=copyright-item><span class=item-title>上次更新</span>
+<span class=item-content>2021-10-05</span></p><p class=copyright-item><span class=item-title>许可协议</span>
+<span class=item-content><a rel="license noopener" href=https://creativecommons.org/licenses/by-nc-nd/4.0/ target=_blank>CC BY-NC-ND 4.0</a></span></p></div><footer class=post-footer><div class=post-tags><a href=https://kinredon.github.io/tags/hugo/>Hugo</a>
 <a href=https://kinredon.github.io/tags/blog/>Blog</a>
-<a href=https://kinredon.github.io/tags/website/>Website</a>
-</div><nav class=post-nav>
-<a class=prev href=/post/org-mode-blog-configuration/>
-<i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417l277.93508-310.326815c11.338233-12.190647 11.035334-32.285311-.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"/></svg>
-</i>
-<span class="prev-text nav-default">如何利用 org mode 写博客</span>
-<span class="prev-text nav-mobile">上一篇</span>
-</a>
-<a class=next href=/post/semi-supervised-object-detection/>
-<span class="next-text nav-default">半监督目标检测（Semi-Supervised Object Detection，SSOD）相关方法介绍</span>
+<a href=https://kinredon.github.io/tags/website/>Website</a></div><nav class=post-nav><a class=prev href=/post/org-mode-blog-configuration/><i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417l277.93508-310.326815c11.338233-12.190647 11.035334-32.285311-.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"/></svg></i><span class="prev-text nav-default">如何利用 org mode 写博客</span>
+<span class="prev-text nav-mobile">上一篇</span></a>
+<a class=next href=/post/semi-supervised-object-detection/><span class="next-text nav-default">半监督目标检测（Semi-Supervised Object Detection，SSOD）相关方法介绍</span>
 <span class="prev-text nav-mobile">下一篇</span>
-<i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697c-11.777231-11.500939-30.216186-10.304694-41.178865 2.712784z"/></svg>
-</i>
-</a>
-</nav></footer></article><div class="post bg-white">
-<script src=https://utteranc.es/client.js repo=kinredon/comments-blog issue-term=pathname theme=github-light crossorigin=anonymous async></script>
-</div></div></div></main><footer id=footer class=footer>
-<div class=icon-links>
-<a href=mailto:kinredon@163.com rel="me noopener" class=iconfont title=email><svg class="icon" viewBox="0 0 1451 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36"><path d="M664.781909 681.472759.0 97.881301C0 3.997201 71.046997.0 71.046997.0H474.477909 961.649408h399.992405s71.046998 3.997201 71.046998 97.881301L771.345323 681.472759S764.482731 685.154773 753.594283 688.65053V688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858V688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759zm53.281707 130.131124C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633.0 212.052267.0 212.052267V942.809523S0 1024 83.726336 1024H682.532949 753.579947h595.368192C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523V212.052267S893.138176 701.759633 817.019477 767.734955c-39.771477 34.470494-74.671786 43.295855-98.955861 43.868928z"/></svg>
-</a>
-<a href=https://github.com/kinredon rel="me noopener" class=iconfont title=github target=_blank><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36"><path d="M512 12.672c-282.88.0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667.0-12.16-.426667-44.373333-.64-87.04C242.005334 929.664 211.968 830.08 211.968 830.08 188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333.0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333.0.0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667.0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72.0 68.522667-.64 123.562667-.64 140.202666.0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"/></svg>
-</a>
-<a href=https://kinredon.github.io/index.xml rel="noopener alternate" type=application/rss+xml class=iconfont title=rss target=_blank><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30"><path d="M819.157333 1024C819.157333 574.592 449.408 204.8.0 204.8V0c561.706667.0 1024 462.293333 1024 1024H819.157333zM140.416 743.04a140.8 140.8.0 01140.501333 140.586667A140.928 140.928.0 01140.074667 1024C62.72 1024 0 961.109333.0 883.626667S62.933333 743.082667 140.416 743.04zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667v-199.04c372.352.0 678.784 306.517333 678.784 678.826667z"/></svg>
-</a>
-</div><div class=copyright>
-<span class=power-by>
-Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a>
-</span>
+<i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18" height="18"><path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697c-11.777231-11.500939-30.216186-10.304694-41.178865 2.712784z"/></svg></i></a></nav></footer></article><div class="post bg-white"><script src=https://utteranc.es/client.js repo=kinredon/comments-blog issue-term=pathname theme=github-light crossorigin=anonymous async></script></div></div></div></main><footer id=footer class=footer><div class=icon-links><a href=mailto:kinredon@163.com rel="me noopener" class=iconfont title=email><svg class="icon" viewBox="0 0 1451 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36"><path d="M664.781909 681.472759.0 97.881301C0 3.997201 71.046997.0 71.046997.0H474.477909 961.649408h399.992405s71.046998 3.997201 71.046998 97.881301L771.345323 681.472759S764.482731 685.154773 753.594283 688.65053V688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858V688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759zm53.281707 130.131124C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633.0 212.052267.0 212.052267V942.809523S0 1024 83.726336 1024H682.532949 753.579947h595.368192C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523V212.052267S893.138176 701.759633 817.019477 767.734955c-39.771477 34.470494-74.671786 43.295855-98.955861 43.868928z"/></svg></a><a href=https://github.com/kinredon rel="me noopener" class=iconfont title=github target=_blank><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36"><path d="M512 12.672c-282.88.0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667.0-12.16-.426667-44.373333-.64-87.04C242.005334 929.664 211.968 830.08 211.968 830.08 188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333.0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333.0.0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667.0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72.0 68.522667-.64 123.562667-.64 140.202666.0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"/></svg></a><a href=https://kinredon.github.io/index.xml rel="noopener alternate" type=application/rss+xml class=iconfont title=rss target=_blank><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30"><path d="M819.157333 1024C819.157333 574.592 449.408 204.8.0 204.8V0c561.706667.0 1024 462.293333 1024 1024H819.157333zM140.416 743.04a140.8 140.8.0 01140.501333 140.586667A140.928 140.928.0 01140.074667 1024C62.72 1024 0 961.109333.0 883.626667S62.933333 743.082667 140.416 743.04zM678.784 1024h-199.04c0-263.210667-216.533333-479.786667-479.744-479.786667v-199.04c372.352.0 678.784 306.517333 678.784 678.826667z"/></svg></a></div><div class=copyright><span class=power-by>Powered by <a class=hexo-link href=https://gohugo.io>Hugo</a></span>
 <span class=division>|</span>
-<span class=theme-info>
-Theme - <a class=theme-link href=https://github.com/xianmin/hugo-theme-jane>Jane</a>
-</span>
-<span class=copyright-year>
-&copy;
+<span class=theme-info>Theme - <a class=theme-link href=https://github.com/xianmin/hugo-theme-jane>Jane</a></span>
+<span class=copyright-year>&copy;
 2021 -
 2022
-<span class=heart>
-<i class=iconfont><svg class="icon" viewBox="0 0 1025 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"><path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7.0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1.0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2.0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3.1-42.5-8-83.6-24-122.2z" fill="#8a8a8a"/></svg>
-</i>
-</span><span class=author>
-kinredon
-</span></span>
-</div></footer><div class=back-to-top id=back-to-top>
-<i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="35"><path d="M510.866688 227.694839 95.449397 629.218702h235.761562L329.15309 958.01517h362.40389L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777h894.052392v131.813095H63.840492V63.962777zm0 0"/></svg>
-</i>
-</div></div><script type=text/javascript src=/lib/jquery/jquery-3.2.1.min.js></script>
+<span class=heart><i class=iconfont><svg class="icon" viewBox="0 0 1025 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="14" height="14"><path d="M1000.1 247.9c-15.5-37.3-37.6-70.6-65.7-98.9-54.4-54.8-125.8-85-201-85-85.7.0-166 39-221.4 107.4C456.6 103 376.3 64 290.6 64c-75.1.0-146.5 30.4-201.1 85.6-28.2 28.5-50.4 61.9-65.8 99.3-16 38.8-24 79.9-23.6 122.2.7 91.7 40.1 177.2 108.1 234.8 3.1 2.6 6 5.1 8.9 7.8 14.9 13.4 58 52.8 112.6 102.7 93.5 85.5 209.9 191.9 257.5 234.2 7 6.1 15.8 9.5 24.9 9.5 9.2.0 18.1-3.4 24.9-9.5 34.5-30.7 105.8-95.9 181.4-165 74.2-67.8 150.9-138 195.8-178.2 69.5-57.9 109.6-144.4 109.9-237.3.1-42.5-8-83.6-24-122.2z" fill="#8a8a8a"/></svg></i></span><span class=author>kinredon</span></span></div></footer><div class=back-to-top id=back-to-top><i class=iconfont><svg class="icon" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="35"><path d="M510.866688 227.694839 95.449397 629.218702h235.761562L329.15309 958.01517h362.40389L691.55698 628.188232l241.942331-3.089361L510.866688 227.694839zM63.840492 63.962777h894.052392v131.813095H63.840492V63.962777zm0 0"/></svg></i></div></div><script type=text/javascript src=/lib/jquery/jquery-3.2.1.min.js></script>
 <script type=text/javascript src=/lib/slideout/slideout-1.0.1.min.js></script>
 <script type=text/javascript src=/js/main.638251f4230630f0335d8c6748e53a96f94b72670920b60c09a56fdc8bece214.js integrity="sha256-Y4JR9CMGMPAzXYxnSOU6lvlLcmcJILYMCaVv3Ivs4hQ=" crossorigin=anonymous></script>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css integrity=sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG crossorigin=anonymous>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.js integrity=sha384-JiKN5O8x9Hhs/UE5cT5AAJqieYlOZbGT3CHws/y97o3ty4R7/O5poG9F3JoiOYw1 crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script>
-<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{})})</script>
-<script type=text/javascript src=/js/load-photoswipe.js></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.css integrity=sha384-BdGj8xC2eZkQaxoQ8nSLefg4AV4/AwB3Fj+8SUSo7pnKP6Eoy18liIKTPn9oBYNG crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/katex.min.js integrity=sha384-JiKN5O8x9Hhs/UE5cT5AAJqieYlOZbGT3CHws/y97o3ty4R7/O5poG9F3JoiOYw1 crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.11.0/dist/contrib/auto-render.min.js integrity=sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI crossorigin=anonymous onload=renderMathInElement(document.body)></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{})})</script><script type=text/javascript src=/js/load-photoswipe.js></script>
 <script type=text/javascript src=/lib/photoswipe/photoswipe.min.js></script>
-<script type=text/javascript src=/lib/photoswipe/photoswipe-ui-default.min.js></script>
-</body></html>
+<script type=text/javascript src=/lib/photoswipe/photoswipe-ui-default.min.js></script></body></html>
