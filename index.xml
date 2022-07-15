@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kinredon's blog</title><link>https://kinredon.github.io/</link><description>Recent content on kinredon's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 21 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kinredon.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://kinredon.github.io/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>https://kinredon.github.io/about/</guid><description>&lt;p>Hugo is a static site engine written in Go.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>kinredon's blog</title><link>https://kinredon.github.io/</link><description>Recent content on kinredon's blog</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Fri, 15 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://kinredon.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://kinredon.github.io/about/</link><pubDate>Sun, 20 Aug 2017 21:38:52 +0800</pubDate><guid>https://kinredon.github.io/about/</guid><description>&lt;p>Hugo is a static site engine written in Go.&lt;/p>
 &lt;p>It makes use of a variety of open source projects including:&lt;/p>
 &lt;ul>
 &lt;li>&lt;a href="https://github.com/spf13/cobra">Cobra&lt;/a>&lt;/li>
@@ -6,7 +6,64 @@
 &lt;li>&lt;a href="https://github.com/spf13/jWalterWeatherman">J Walter Weatherman&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://github.com/spf13/cast">Cast&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>Learn more and contribute on &lt;a href="https://github.com/gohugoio">GitHub&lt;/a>.&lt;/p></description></item><item><title>为什么要学习写作？</title><link>https://kinredon.github.io/post/why_writing/</link><pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/why_writing/</guid><description>&lt;p>科研生活常常伴随着失败与痛苦，我时常在想除了科研与学习，我的生活还有什么？环顾四周，发现自己也没什么兴趣爱好，或者坚持下来的兴趣爱好。《人生的智慧》写到人类幸福有两大死敌&amp;ndash;痛苦和无聊。而我不想过于无聊，正是之外找点事干！&lt;/p>
+&lt;p>Learn more and contribute on &lt;a href="https://github.com/gohugoio">GitHub&lt;/a>.&lt;/p></description></item><item><title>ECCV 2022 | 半监督目标检测新 SoTA, Dense Teacher</title><link>https://kinredon.github.io/post/paper-reading-dense-teacher/</link><pubDate>Fri, 15 Jul 2022 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/paper-reading-dense-teacher/</guid><description>&lt;p>这篇论文提出了一个新的 &lt;strong>半监督目标检测模型 Dense Teacher, 推翻了当前流行的用 thresholding 生成 hard pseudo label 的范式，Teacher 模型仅提供 dense pseudo label, 能够有效地提升单阶段目标检测器 FCOS 在半监督场景下的性能。COCO 10% labeled 情况下能达到 35.11 的 mAP，是当前半监督目标检测最好的效果。&lt;/strong>&lt;/p>
+&lt;h2 id="动机">动机&lt;/h2>
+&lt;link rel="stylesheet" href="https://kinredon.github.io/css/hugo-easy-gallery.css" />
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20220715220246.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20220715220246.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;p>&lt;strong>首先为什么当前的 Thresholding 生成 pseudo label 的方法不好？&lt;/strong> 如上图所示，当前流行的 thresholding 生成 pseudo label 主要包含了三个步骤：&lt;/p>
+&lt;ol>
+&lt;li>NMS： 用一个 threshold 去除冗余的预测框；&lt;/li>
+&lt;li>thresholding：用一个预定义的超参数 threshold 去过滤预测出来的框；&lt;/li>
+&lt;li>label assign；&lt;/li>
+&lt;/ol>
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20220715220924.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20220715220924.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;p>这三个地方都有对应的问题，前两个主要是对应的 threshold 很难选，如上图所示, (a)(b) 分别展示了 score threshold 和 NMS threshold 对模型性能的影响，可以看到模型的效果随着 threshold 的波动而剧烈波动。除此之外，这个最优的 threshold 在没有真正 label 的情况下几乎确定不了，大了不好，acc 上去了，但是 recall 很低，就会产生很多假阴性样本（False Negative）；小了也不好，recall 上去了，acc 低了，就会产生很多假阳性（ False Positive）样本。而且不同的检测器用不同的 label assignment 方法, 有噪声的 pseudo label 会严重影响 label assignment。之前 label assignment 也是单阶段目标检测器的一个研究方向，诞生了很多工作，比如 ATSS，PAA。&lt;/p>
+&lt;h2 id="方法">方法&lt;/h2>
+&lt;p>基于上面提到的一些 thresholding 产生的问题，所以作者提出了 Dense Teacher，摒弃传统的 thresholding 策略。具体的的方法很简单，teacher 对整个 feature map 经过 sigmoid 生成一个 dense label（这里有些迷惑，但作者也没有给更多具体实现细节还有些缺失, 等放了代码再看）,有了生成的 dense label，就可以用 Quality Focal Loss （Generalized Focal Loss） 来监督 student 模型的输出了。&lt;/p>
+&lt;p>由于生成的 dense label 中间包含了很多 low score 的区域，作者提出用 FRS score 作为依据来过滤掉一些 low score 的区域。FRS score 定义如下：&lt;/p>
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20220715233343.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20220715233343.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;p>其实就是某一个样本（point in FCOS）的分类最大概率值。然后 teacher 生成的 dense label 根据 FRS score 选取 top k% 来监督 student，其余不做约束。&lt;/p>
+&lt;h2 id="结果">结果&lt;/h2>
+&lt;p>整个方法很简单，但是结果很有效。以 COCO-standard 结果为例（见下表）, Dense Teacher 在各种情况下都达到了最佳的效果。&lt;/p>
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20220715233703.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20220715233703.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;p>除此之外，也对 dense label 的一些作用给出了一些解释，主要是说 dense label 能够找到一些 hard negative region 来辅助训练，如下图所示, dense label 与 box label 相比，会找到一些 hard negative region 来帮助模型训练（但是我感觉这个解释有点weak）。
+&lt;img src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20220715233859.png" alt="">&lt;/p>
+&lt;h2 id="总结">总结&lt;/h2>
+&lt;p>Dense Teacher 提出生成 dense pseudo label 来训练 student 模型，摒弃之前的 thresholding 方法，效果提升很明显。其实半监督目标检测里面的 thresholding 一直就有问题，所以设计了很多方法来选，但是检测和分类有很大的不同，检测是一个 box level 的 thresholding，合适的 threshold 非常难选，这篇文章给出了一个新的思路。但是作者只是很简单的说因为生成的是 dense label，所以选 dense object detector，也就是 FCOS 这类 anchor free 的方法。对于 two stage 的检测器，如 Faster RCNN 来说可能就不太适用。&lt;/p>
+&lt;p>BTW，CVPR 2022 有一篇 Unbiased Teacher V2，里面也使用了 FCOS 检测器，也复现了 Unbiased Teacher 的结果，但是二者结果相差还是很大的。举个栗子，COCO standard 10% 数据集下，unbiased teacher v2 复现的 FCOS unbiased teacher 只有 28.18, 而 Dense Teacher 复现的有 unbiased teacher 能达到 31.52 mAP(cls), 33.13 (cls + reg)， 这个结果和 unbiased teacher v2 的结果（32.61）差不多了。&lt;/p>
+&lt;p>对细节感兴趣建议阅读 paper 原文。&lt;/p></description></item><item><title>为什么要学习写作？</title><link>https://kinredon.github.io/post/why_writing/</link><pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/why_writing/</guid><description>&lt;p>科研生活常常伴随着失败与痛苦，我时常在想除了科研与学习，我的生活还有什么？环顾四周，发现自己也没什么兴趣爱好，或者坚持下来的兴趣爱好。《人生的智慧》写到人类幸福有两大死敌&amp;ndash;痛苦和无聊。而我不想过于无聊，正是之外找点事干！&lt;/p>
 &lt;p>我曾经尝试过很多，而结果是角落的吉他已经铺满灰尘、单反相机太久没接触电流、蛋白粉低价转交给实验室的博士、B站学习视频深埋收藏夹等等。思来想去，原因可能在于兴趣不够强烈，但是兴趣这个东西不是天然存在的，而是靠发现，是靠做出来的。还有一个原因可能是这些娱乐和兴趣需要的准备事项过多，在准备过程中容易被打断，个人比较宅，很多兴趣爱好天然不适合我。&lt;/p>
 &lt;p>通过一番寻找，发现写作是一个不错的方式，它不需要太多的准备空间，打开电脑敲下键盘就可以，此前在个人博客和知乎上也有过写作经验，而且形成了一套工作流，不妨讲写作当作业余的爱好。何况写作本身也有一些好处，我总结为以下几点：&lt;/p>
 &lt;p>&lt;strong>帮助理清思路，更好地表达&lt;/strong> ：大多时候看完一本书我们以为懂了，一旦有人问你这本书讲了什么，很少有人能够说清楚。常常是颅内浆糊，心中有个大概的概念，但没办法有逻辑地表达出来。这样的感觉在读论文的时候特别明显，每次读完论文，基本了解个大概，但很难快速说出核心的动机、方法和实验结论。想要顺利的表达，写作是一个不错的练习方式，想要写下来，怎么也得立个提纲吧，立提纲总要理一理思路看看有哪些方法需要写，不知不觉中逻辑与表达得到了锻炼。&lt;/p>
@@ -229,7 +286,80 @@ itemscope itemtype="http://schema.org/ImageObject" >
 &lt;p>写到这里，都是一些碎碎念，脑子还有很多很多想法，但都虚无缥缈，2022 希望能够将它们具像化。最后【遇到再大的困难，加油，奥利给！】【只要思想不滑坡，方法总比困难多】&lt;/p>
 &lt;p>2022&lt;/p>
 &lt;p>It is about time.&lt;/p>
-&lt;p>It is all about time.&lt;/p></description></item><item><title>Vision Transformer 在目标检测上的探索，DETR 系列文章解读（一）</title><link>https://kinredon.github.io/post/vision-transformer-for-object-detection/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/vision-transformer-for-object-detection/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>It is all about time.&lt;/p></description></item><item><title>Vision Transformer 在目标检测上的探索，DETR 系列文章解读（二）Deformable DETR</title><link>https://kinredon.github.io/post/vision-transformer-for-object-detection_2/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/vision-transformer-for-object-detection_2/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>针对 DETR 收敛慢资源消耗多，小目标检测难的问题，Jifeng Dai 团队做出了 Deformable DETR，根据 Deformable convolution 的思想对 DETR 进行改进，即让注意力模块只注意到参考点周围的少量样本点。如下图所示，作者提出的 Deformable DETR 把多尺度的 feature map 送入 encoder 中，在 encoder 中，下一层的 feature 由上一层的参考点周围的少量点决定，最终将 encoder 的多次度特征再送到 decoder 中，最终输出预测的结果。&lt;/p>
+&lt;link rel="stylesheet" href="https://kinredon.github.io/css/hugo-easy-gallery.css" />
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211216192053.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211216192053.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;h2 id="正文">正文&lt;/h2>
+&lt;p>Deformable DETR 的核心在于 Deformable Attention Module，该模块用于直接替换 DETR 中的 multi-head self-attention 模块，由于 Deformable DETR 在计算 attention 的时候只考虑参考点周围的几个偏移点，大大的减少了计算量，因此也可以使得模型能够扩展到 multi-scale，进一步提升模型在不同尺度目标上的检测性能。&lt;/p>
+&lt;h3 id="deformable-attention-module">Deformable Attention Module&lt;/h3>
+&lt;p>Deformable DETR 的主要贡献便是提出了一个 Deformable Attention Module 的模块，该模块可以用于替换 encoder 中的 self-attention 模块，能极大地减少计算量。由于 query feature 仅与参考点周围的 K 个样本做交互，实现中 K=4，因此计算量大大减少。减少计算量的同时，由于限制了 attention 的范围，相当于加入了一些先验知识，使得模型收敛更快。&lt;/p>
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211216194118.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211216194118.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;p>Deformable Attention Module 的具体设计入上图所示，首先一个 Query Feature \(z_q\) 经过两个 linear 层，分别生成 \(2*MK\) 和 \(MK\) 的 offset 和 attention weight。根据对应的参考点（其实就是 query 在 feature map 中的位置）预测 offset，计算新的坐标点，采集这些新坐标点特征并用 attention weight 进行加权融合信息，最终将多个 head 的信息 concat 到一起。形式化的定义如下：&lt;/p>
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211225163158.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211225163158.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;p>其中 x 是一个 \(C*H*W\) 的 feature map， \(\boldsymbol{W}_{m}^{\prime}\) 是一个 1*1 的卷积层，用于降低 channel 的维度， \(\boldsymbol{p}_{q}\) 是参考点， \(\Delta \boldsymbol{p}_{m q k}\) 是用 query feature 预测得到的 offset，从feature map 中得到参考点 \(\boldsymbol{p}_{q}\) 周围的特征，通过 attention weight 加权求和得到新的 feature。&lt;/p>
+&lt;h3 id="multi-scale-deformable-attention-module">Multi-scale Deformable Attention Module&lt;/h3>
+&lt;p>为了解决多尺度目标检测的问题，作者提出了 Multi-scale Deformable Attention Module，主要的差别是将不同层的 feature 融合在一起，多了一个 scale 的维度，如下：&lt;/p>
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211225163249.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211225163249.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;p>其中 \(\phi_{l}\) 是一个映射函数，将参考点的位置映射回对应的 feature map 层级。&lt;/p>
+&lt;h3 id="deformable-transformer-encoder">Deformable transformer encoder&lt;/h3>
+&lt;p>在实现上，作者使用了四层的 feature map 作为多尺度特征，前三层是 ResNet 的 \(C_3\) 和 $C_5$，最后一层通过在最后的 \(C_5\) 层后加一个 \(3*3，stride=2\) 的卷积层得到，记为 \(C_6\) 。所有的多尺度 feature maps 都转化为同一个 channel 大小 \(C=256\) ，入下图所示：&lt;/p>
+&lt;div class="box">
+&lt;figure itemprop="associatedMedia"
+itemscope itemtype="http://schema.org/ImageObject" >
+&lt;div class="img">
+&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211216200200.png" />
+&lt;/div>
+&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211216200200.png" itemprop="contentUrl">&lt;/a>
+&lt;/figure>
+&lt;/div>
+&lt;p>为了在学习过程中，模型能够知道对应的特征来着哪一个层级，作者在 positional encoding 里面还加入了随机初始化科学系的 scale-level 的 positional encoding。&lt;/p>
+&lt;h3 id="deformable-transformer-decoder">Deformable transformer decoder&lt;/h3>
+&lt;p>在 decoder 中，每一个 decoder layer 有 self-attention 和 cross-attention 两个部分，self-attention可以直接从计算 object query。而 object query 在 cross-attention 对应的参考点则使用一个可学习的 linear layer 来学习。由于最终抽取的特征是在一个参考点周围的图像特征，所以作者将检测头也设计为预测针对参考点的 offset 而不是绝对坐标。&lt;/p>
+&lt;h3 id="deformable-detr-的两个变体">Deformable DETR 的两个变体&lt;/h3>
+&lt;p>作者还设计了两个 Deformable DETR 的变体，分别是进行迭代式的 bounding boxes 修正，以及 two-stage Deformable DETR。&lt;/p>
+&lt;ol>
+&lt;li>迭代式的 bounding boxes 修正&lt;/li>
+&lt;/ol>
+&lt;p>decoder 的每一层修正上一层的预测，即上一层的预测的结果输入到下一层。&lt;/p>
+&lt;ol>
+&lt;li>Two-Stage Deformable DETR&lt;/li>
+&lt;/ol>
+&lt;p>从 two-stage 目标检测器得到启发，作者首先利用一个 FFN 在 encoder 的 feature 上得到初始的 region proposal，挑选其中分数较高的 proposal 用于后续的优化。具体来说，作者将分数较高的 proposal 当做迭代式的 bounding boxes 修正的初始点。&lt;/p>
+&lt;h2 id="总结">总结&lt;/h2>
+&lt;p>Deformable DETR 通过将 Deformable Conv 的思想引入 DETR，不仅减少了计算量，而且提高了模型的收敛速度。在实验部分，Deformable DETR 仅需要 50 epochs 便能达到 DETR 需要 500 epochs 达到的效果，相当于 10x 的收敛速度，而且精度更高。&lt;/p></description></item><item><title>Vision Transformer 在目标检测上的探索，DETR 系列文章解读（一）</title><link>https://kinredon.github.io/post/vision-transformer-for-object-detection/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/vision-transformer-for-object-detection/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>DETR（Detection Transformer） 将 CNN 与 Transformer 相结合，把检测任务当做集合预测 （set prediction） 任务，实现真正的 end-to-end 目标检测模型，即不需要任何的后处理阶段，比如 NMS 去除冗余框，直接从图片的原始像素得到最终的目标框和坐标预测。DETR 是 2020 年 5 月的文章，是早于 ViT （2020年10月），可以说 DETR 是 Vision Transformer 的奠基作品之一，不仅改变了大家对目标检测的一些固有看法，而且给后续 Vision Transformer 的发展具有重要意义，目前的引用量也有 1200+ （21 年 12 月）。&lt;/p>
 &lt;h2 id="正文">正文&lt;/h2>
 &lt;link rel="stylesheet" href="https://kinredon.github.io/css/hugo-easy-gallery.css" />
@@ -439,80 +569,7 @@ itemscope itemtype="http://schema.org/ImageObject" >
 &lt;li>收敛速度慢，资源消耗多。DETR 训练需要的资源消耗也让很多人望而却步，作者在 COCO 数据集上训练 DETR 需要至少 300 epoch，使用 16 张 V100 需要训练三天才能收敛。&lt;/li>
 &lt;li>在小目标上表现欠佳。&lt;/li>
 &lt;/ol>
-&lt;p>后续基于 DETR 的工作主要集中解决后两个问题，使得模型收敛更快，性能更好。&lt;/p></description></item><item><title>Vision Transformer 在目标检测上的探索，DETR 系列文章解读（二）Deformable DETR</title><link>https://kinredon.github.io/post/vision-transformer-for-object-detection_2/</link><pubDate>Thu, 16 Dec 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/vision-transformer-for-object-detection_2/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
-&lt;p>针对 DETR 收敛慢资源消耗多，小目标检测难的问题，Jifeng Dai 团队做出了 Deformable DETR，根据 Deformable convolution 的思想对 DETR 进行改进，即让注意力模块只注意到参考点周围的少量样本点。如下图所示，作者提出的 Deformable DETR 把多尺度的 feature map 送入 encoder 中，在 encoder 中，下一层的 feature 由上一层的参考点周围的少量点决定，最终将 encoder 的多次度特征再送到 decoder 中，最终输出预测的结果。&lt;/p>
-&lt;link rel="stylesheet" href="https://kinredon.github.io/css/hugo-easy-gallery.css" />
-&lt;div class="box">
-&lt;figure itemprop="associatedMedia"
-itemscope itemtype="http://schema.org/ImageObject" >
-&lt;div class="img">
-&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211216192053.png" />
-&lt;/div>
-&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211216192053.png" itemprop="contentUrl">&lt;/a>
-&lt;/figure>
-&lt;/div>
-&lt;h2 id="正文">正文&lt;/h2>
-&lt;p>Deformable DETR 的核心在于 Deformable Attention Module，该模块用于直接替换 DETR 中的 multi-head self-attention 模块，由于 Deformable DETR 在计算 attention 的时候只考虑参考点周围的几个偏移点，大大的减少了计算量，因此也可以使得模型能够扩展到 multi-scale，进一步提升模型在不同尺度目标上的检测性能。&lt;/p>
-&lt;h3 id="deformable-attention-module">Deformable Attention Module&lt;/h3>
-&lt;p>Deformable DETR 的主要贡献便是提出了一个 Deformable Attention Module 的模块，该模块可以用于替换 encoder 中的 self-attention 模块，能极大地减少计算量。由于 query feature 仅与参考点周围的 K 个样本做交互，实现中 K=4，因此计算量大大减少。减少计算量的同时，由于限制了 attention 的范围，相当于加入了一些先验知识，使得模型收敛更快。&lt;/p>
-&lt;div class="box">
-&lt;figure itemprop="associatedMedia"
-itemscope itemtype="http://schema.org/ImageObject" >
-&lt;div class="img">
-&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211216194118.png" />
-&lt;/div>
-&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211216194118.png" itemprop="contentUrl">&lt;/a>
-&lt;/figure>
-&lt;/div>
-&lt;p>Deformable Attention Module 的具体设计入上图所示，首先一个 Query Feature \(z_q\) 经过两个 linear 层，分别生成 \(2*MK\) 和 \(MK\) 的 offset 和 attention weight。根据对应的参考点（其实就是 query 在 feature map 中的位置）预测 offset，计算新的坐标点，采集这些新坐标点特征并用 attention weight 进行加权融合信息，最终将多个 head 的信息 concat 到一起。形式化的定义如下：&lt;/p>
-&lt;div class="box">
-&lt;figure itemprop="associatedMedia"
-itemscope itemtype="http://schema.org/ImageObject" >
-&lt;div class="img">
-&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211225163158.png" />
-&lt;/div>
-&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211225163158.png" itemprop="contentUrl">&lt;/a>
-&lt;/figure>
-&lt;/div>
-&lt;p>其中 x 是一个 \(C*H*W\) 的 feature map， \(\boldsymbol{W}_{m}^{\prime}\) 是一个 1*1 的卷积层，用于降低 channel 的维度， \(\boldsymbol{p}_{q}\) 是参考点， \(\Delta \boldsymbol{p}_{m q k}\) 是用 query feature 预测得到的 offset，从feature map 中得到参考点 \(\boldsymbol{p}_{q}\) 周围的特征，通过 attention weight 加权求和得到新的 feature。&lt;/p>
-&lt;h3 id="multi-scale-deformable-attention-module">Multi-scale Deformable Attention Module&lt;/h3>
-&lt;p>为了解决多尺度目标检测的问题，作者提出了 Multi-scale Deformable Attention Module，主要的差别是将不同层的 feature 融合在一起，多了一个 scale 的维度，如下：&lt;/p>
-&lt;div class="box">
-&lt;figure itemprop="associatedMedia"
-itemscope itemtype="http://schema.org/ImageObject" >
-&lt;div class="img">
-&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211225163249.png" />
-&lt;/div>
-&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211225163249.png" itemprop="contentUrl">&lt;/a>
-&lt;/figure>
-&lt;/div>
-&lt;p>其中 \(\phi_{l}\) 是一个映射函数，将参考点的位置映射回对应的 feature map 层级。&lt;/p>
-&lt;h3 id="deformable-transformer-encoder">Deformable transformer encoder&lt;/h3>
-&lt;p>在实现上，作者使用了四层的 feature map 作为多尺度特征，前三层是 ResNet 的 \(C_3\) 和 $C_5$，最后一层通过在最后的 \(C_5\) 层后加一个 \(3*3，stride=2\) 的卷积层得到，记为 \(C_6\) 。所有的多尺度 feature maps 都转化为同一个 channel 大小 \(C=256\) ，入下图所示：&lt;/p>
-&lt;div class="box">
-&lt;figure itemprop="associatedMedia"
-itemscope itemtype="http://schema.org/ImageObject" >
-&lt;div class="img">
-&lt;img itemprop="thumbnail" src="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211216200200.png" />
-&lt;/div>
-&lt;a href="https://kinredon.github.io/ox-hugo/pngpaste_clipboard_file_20211216200200.png" itemprop="contentUrl">&lt;/a>
-&lt;/figure>
-&lt;/div>
-&lt;p>为了在学习过程中，模型能够知道对应的特征来着哪一个层级，作者在 positional encoding 里面还加入了随机初始化科学系的 scale-level 的 positional encoding。&lt;/p>
-&lt;h3 id="deformable-transformer-decoder">Deformable transformer decoder&lt;/h3>
-&lt;p>在 decoder 中，每一个 decoder layer 有 self-attention 和 cross-attention 两个部分，self-attention可以直接从计算 object query。而 object query 在 cross-attention 对应的参考点则使用一个可学习的 linear layer 来学习。由于最终抽取的特征是在一个参考点周围的图像特征，所以作者将检测头也设计为预测针对参考点的 offset 而不是绝对坐标。&lt;/p>
-&lt;h3 id="deformable-detr-的两个变体">Deformable DETR 的两个变体&lt;/h3>
-&lt;p>作者还设计了两个 Deformable DETR 的变体，分别是进行迭代式的 bounding boxes 修正，以及 two-stage Deformable DETR。&lt;/p>
-&lt;ol>
-&lt;li>迭代式的 bounding boxes 修正&lt;/li>
-&lt;/ol>
-&lt;p>decoder 的每一层修正上一层的预测，即上一层的预测的结果输入到下一层。&lt;/p>
-&lt;ol>
-&lt;li>Two-Stage Deformable DETR&lt;/li>
-&lt;/ol>
-&lt;p>从 two-stage 目标检测器得到启发，作者首先利用一个 FFN 在 encoder 的 feature 上得到初始的 region proposal，挑选其中分数较高的 proposal 用于后续的优化。具体来说，作者将分数较高的 proposal 当做迭代式的 bounding boxes 修正的初始点。&lt;/p>
-&lt;h2 id="总结">总结&lt;/h2>
-&lt;p>Deformable DETR 通过将 Deformable Conv 的思想引入 DETR，不仅减少了计算量，而且提高了模型的收敛速度。在实验部分，Deformable DETR 仅需要 50 epochs 便能达到 DETR 需要 500 epochs 达到的效果，相当于 10x 的收敛速度，而且精度更高。&lt;/p></description></item><item><title>【收藏向】快速完成在线会议视频录制（视频转换 + 字幕制作）</title><link>https://kinredon.github.io/post/presentation_for_online_academic_conference/</link><pubDate>Fri, 05 Nov 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/presentation_for_online_academic_conference/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
+&lt;p>后续基于 DETR 的工作主要集中解决后两个问题，使得模型收敛更快，性能更好。&lt;/p></description></item><item><title>【收藏向】快速完成在线会议视频录制（视频转换 + 字幕制作）</title><link>https://kinredon.github.io/post/presentation_for_online_academic_conference/</link><pubDate>Fri, 05 Nov 2021 00:00:00 +0000</pubDate><guid>https://kinredon.github.io/post/presentation_for_online_academic_conference/</guid><description>&lt;h2 id="前言">前言&lt;/h2>
 &lt;p>最近由于疫情原因，国际出行难度变高，不少 AI 学术会议采用线上的形势，比如 ICCV, CVPR 等等。线上会议通常不仅要求 oral paper 录制视频讲解论文内容，还要求 poster 同样需要录制视频内容。基于此，本文记录如何快速进行视频录制，并进行字幕的制作。建议收藏，下次遇到线上会议需要录制视频，直接按照步骤开始即可。在这个过程中，有更好地工具也欢迎私信我。&lt;/p>
 &lt;p>主要的过程和使用的工具如下：&lt;/p>
 &lt;ol>
